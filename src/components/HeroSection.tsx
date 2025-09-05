@@ -23,7 +23,7 @@ export default function HeroSection() {
               Transforming Education - With Expertise and Empathy
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Engineer, Manager, and Educator dedicated to making Math and Physics engaging across CBSE, IB, IGCSE, and global curricula.  Passionate about fostering curiosity, building resilience, and creating learner-centric environments that empower every student to succeed.
+              Versatile educator with expertise across CBSE, IB, and international curricula, passionate about making Math and Physics engaging, accessible, and impactful.
             </p>
           </div>
 
