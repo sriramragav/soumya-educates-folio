@@ -19,8 +19,11 @@ export default function HeroSection() {
           </div>
           
           <div className="space-y-4">
-            <h1 className="hero-text">
-              Transforming Education - With Expertise and Empathy
+            <h1 className="hero-text text-4xl font-bold leading-tight">
+              Transforming Education <br />
+              <span className="text-2xl font-medium text-gray-700">
+                With Expertise and Empathy
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Versatile educator with expertise across CBSE, IB, and international curricula, passionate about making Math and Physics engaging, accessible, and impactful.
