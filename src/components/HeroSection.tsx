@@ -42,18 +42,14 @@ export default function HeroSection() {
                 Download Resume
               </a>
             </Button>
-            
-            <Button
-              variant="outline"
-              size="lg"
-              className="gap-2"
-              asChild
-            >
-              <a href="/assets/SoumyaResume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="h-5 w-5" />
-                View Resume
+
+            <Button variant="outline" size="lg" className="gap-2" asChild>
+              <a href="/resume" target="_blank" rel="noopener noreferrer">
+              <FileText className="h-5 w-5" />
+              View Resume
               </a>
             </Button>
+            
           </div>
         </div>
       </div>
