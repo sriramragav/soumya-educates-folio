@@ -20,12 +20,10 @@ export default function HeroSection() {
           
           <div className="space-y-4">
             <h1 className="hero-text">
-              Transforming Education
+              Transforming Education - With Expertise and Empathy
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Passionate educator dedicated to fostering innovative learning experiences 
-              and empowering students to reach their full potential through personalized, 
-              research-based teaching methodologies.
+              Engineer, Manager, and Educator dedicated to making Math and Physics engaging across CBSE, IB, IGCSE, and global curricula.  Passionate about fostering curiosity, building resilience, and creating learner-centric environments that empower every student to succeed.
             </p>
           </div>
 
