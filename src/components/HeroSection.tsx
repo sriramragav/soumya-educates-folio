@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Download, FileText } from 'lucide-react';
-import soumyaHeadshot from '@/assets/soumya-headshot.jpg';
+import soumyaHeadshot from '@/assets/SoumyaSpeaking.jpeg';
 
 export default function HeroSection() {
   return (
