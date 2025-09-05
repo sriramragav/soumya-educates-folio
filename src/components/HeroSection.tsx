@@ -31,13 +31,28 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="gap-2">
-              <Download className="h-5 w-5" />
-              Download Resume
+            <Button
+              variant="hero"
+              size="lg"
+              className="gap-2"
+              asChild
+            >
+              <a href="/assets/SoumyaResume.pdf" download>
+                <Download className="h-5 w-5" />
+                Download Resume
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-2">
-              <FileText className="h-5 w-5" />
-              View Resume
+            
+            <Button
+              variant="outline"
+              size="lg"
+              className="gap-2"
+              asChild
+            >
+              <a href="/assets/SoumyaResume.pdf" target="_blank" rel="noopener noreferrer">
+                <FileText className="h-5 w-5" />
+                View Resume
+              </a>
             </Button>
           </div>
         </div>
