@@ -101,6 +101,7 @@ export default function PortfolioSection() {
             ))}
           </div>
         </div>
+        <br /><br />
 
         {/* Subjects */}
         <div className="mb-16">
