@@ -103,18 +103,18 @@ export default function ScrollableHighlightsAndSkills() {
           <button
             onClick={scrollLeft}
             aria-label="Scroll left"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-indigo-600 text-white rounded-full shadow hover:bg-indigo-700 hidden md:block"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 md:p-2"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} />
           </button>
         )}
         {canScrollRight && (
           <button
             onClick={scrollRight}
             aria-label="Scroll right"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-indigo-600 text-white rounded-full shadow hover:bg-indigo-700 hidden md:block"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 md:p-2"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} />
           </button>
         )}
 
