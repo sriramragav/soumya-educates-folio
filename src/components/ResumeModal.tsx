@@ -21,7 +21,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ open, onOpenChange }) => {
           </button>
         </DialogHeader>
         <div className="w-full h-full">
-          <iframe
+          <embed
             src="/assets/SoumyaResume.pdf"
             title="Soumya Resume"
             className="w-full h-full"
