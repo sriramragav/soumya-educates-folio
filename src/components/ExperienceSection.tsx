@@ -90,46 +90,49 @@ export default function ExperienceSection() {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
     }
   };
 
   return (
     <section id="experience" className="py-20">
       <div className="section-container">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Journey</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A timeline of educational excellence and transformative leadership
           </p>
         </div>
 
-        {/* Outer Box */}
-        <div className="relative max-w-full mx-auto flex items-center">
+        {/* Outer container */}
+        <div className="relative max-w-6xl mx-auto">
           <Button
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className="absolute left-0 z-10 h-10 w-10"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
 
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth py-4 px-12 md:px-16"
+            className="flex gap-6 overflow-x-auto scroll-smooth px-12 py-4"
           >
             {experiences.map((exp, index) => {
               const Icon = exp.icon;
               return (
-                <Card key={index} className="bg-card shadow-elegant flex-shrink-0 w-[85%] md:w-[40%] max-h-[450px] flex flex-col">
-                  <CardContent className="p-6 flex flex-col h-full">
+                <Card
+                  key={index}
+                  className="flex-shrink-0 w-[80%] md:w-[45%] max-h-[480px] flex flex-col bg-card shadow-elegant"
+                >
+                  <CardContent className="flex flex-col h-full p-6">
                     <div className="flex items-start gap-4 flex-1">
                       <div className="bg-primary text-primary-foreground p-3 rounded-lg flex-shrink-0">
                         <Icon className="h-6 w-6" />
@@ -139,13 +142,13 @@ export default function ExperienceSection() {
                         <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                         <p className="text-accent font-medium mb-3">{exp.organization}</p>
 
-                        {/* Bullets Scroll */}
+                        {/* Bullets with vertical scroll */}
                         <div className="flex-1 overflow-y-auto pr-2 mb-4">
                           <div className="space-y-2">
                             {exp.bullets.map((bullet, i) => (
                               <div key={i} className="flex items-start gap-2">
                                 <div className="w-2 h-2 bg-primary rounded-full mt-1 flex-shrink-0"></div>
-                                <p className="text-muted-foreground leading-relaxed text-sm">{bullet}</p>
+                                <p className="text-muted-foreground text-sm leading-relaxed">{bullet}</p>
                               </div>
                             ))}
                           </div>
@@ -174,7 +177,7 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className="absolute right-0 z-10 h-10 w-10"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
