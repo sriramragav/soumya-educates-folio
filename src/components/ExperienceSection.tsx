@@ -177,8 +177,8 @@ export default function ExperienceSection() {
           </Button>
           <div 
             ref={scrollRef}
-            className="flex gap-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory scroll-smooth px-4"
-            style={{ scrollSnapType: 'x mandatory' }}
+            className="flex gap-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth px-4"
+            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'auto' /* for Firefox */ }}
           >
             {experiences.map((exp, index) => (
               <Card 
