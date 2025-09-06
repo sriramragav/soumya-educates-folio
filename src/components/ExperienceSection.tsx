@@ -16,7 +16,8 @@ const experiences = [
       'Trained teachers & collaborated with LMS team for online concept revisions.'
     ],
     icon: Building,
-    highlights: ['Teaching Excellence', 'Mentorship', 'Department Leadership']
+    
+    highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination']
   },
   {
     year: '2017 - 2020',
