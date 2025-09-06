@@ -20,29 +20,87 @@ const experiences = [
     highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination']
   },
   {
-    year: '2017 - 2020',
-    title: 'Academic Director',
-    organization: 'Bright Future International School',
-    description: 'Oversaw academic operations for 1200+ students. Introduced project-based learning methodologies and integrated technology into traditional classroom settings.',
-    icon: GraduationCap,
-    highlights: ['Academic Leadership', 'Technology Integration', 'Student Outcomes']
-  },
-  {
-    year: '2014 - 2017',
-    title: 'Educational Program Manager',
-    organization: 'Learning Excellence Foundation',
-    description: 'Managed educational programs for underserved communities. Developed and executed literacy programs that reached over 5000 students across rural areas.',
-    icon: Users,
-    highlights: ['Program Management', 'Community Outreach', 'Literacy Programs']
-  },
-  {
-    year: '2010 - 2014',
-    title: 'Senior Teacher & Department Head',
-    organization: 'Delhi Public School Network',
-    description: 'Led mathematics department and pioneered innovative teaching methods. Mentored 25+ teachers and developed professional development programs.',
-    icon: Award,
-    highlights: ['Teaching Excellence', 'Mentorship', 'Department Leadership']
-  }
+  year: 'Oct 2019 - Oct 2023',
+  title: 'Freelance Online Math & Physics Tutor',
+  organization: 'Self-employed',
+  bullets: [
+    'Tutored IB, IGCSE, ICSE, and CBSE Math & Physics (Grades 8–12).',
+    'Guided students through past papers to strengthen concept application.',
+    'Developed concepts, experimental procedures, and mathematical modeling for IBDP IA projects (HL & SL).',
+    'Provided solutions and one-on-one guidance for textbook problems and past papers.',
+    'Conducted periodic unit tests and exam revision with focus on weak areas.'
+  ],
+  icon: Users,
+  highlights: ['IB/IGCSE/CBSE Tutoring', 'Concept Development', 'Experimental & Mathematical Modeling', 'Exam Preparation', 'One-on-One Mentorship']
+},
+
+{
+  year: 'Jul 2018 - Sep 2019',
+  title: 'Academic Coordinator & Online Instructor',
+  organization: 'Catalyze Center for Learning / Vidyalai',
+  bullets: [
+    'Designed academic assessment procedures and trained teachers across curricula.',
+    'Tutored Math & Physics for students (IB, IGCSE, Edexcel, Australian, New Zealand, Singapore curricula) up to Grade 10.',
+    'Organized, analyzed, and presented syllabi for multiple grades and curricula.',
+    'Conducted assessments, provided feedback, and prepared students for board exams.',
+    'Created individualized study plans addressing grey areas to maximize student performance.'
+  ],
+  icon: GraduationCap,
+  highlights: ['Curriculum Design','Teacher Training','International Tutoring','Assessment & Feedback','Personalized Learning Plans']
+},
+{
+  year: 'Jun 2017 - Mar 2018',
+  title: 'Academic Coordinator',
+  organization: 'Edify, Ecity, Bengaluru',
+  bullets: [
+    'Managed and mentored a team of teachers (Grades 1–6).',
+    'Conducted classes across subjects as per organizational requirements.',
+    'Observed classes and provided structured, constructive feedback to teachers.',
+    'Facilitated PTMs, documented feedback, and implemented policies to enhance academic performance.',
+    'Conducted parent induction programs and educated parents on teaching methodologies and assessment procedures.',
+    'Counseled students on disciplinary and academic concerns.',
+    'Coordinated with head office for teacher training programs and compliance documentation.'
+  ],
+  icon: Building,
+  highlights: ['Teacher Management','Class Observation & Feedback','Parent Engagement','Policy Implementation','Student Counseling','Teacher Training Coordination']
+},
+{
+  year: 'Dec 2014 - Sep 2016',
+  title: 'Early Years Educator',
+  organization: 'TVS Academy',
+  bullets: [
+    'Facilitated English, EVS, Math, and Montessori sessions for kindergarten and Class I students.',
+    'Designed physical and cognitive activities to enhance fine, gross, and large motor skills.',
+    'Identified behavioral challenges and applied targeted interventions using physical movement and learning style analysis (Auditory, Visual, Kinesthetic).',
+    'Implemented feedback from workshops on child psychology and teacher development to improve teaching methodology.',
+    'Conducted morning meditation, pranayama sessions, and wellness activities for students (Class VI–XII).',
+    'Implemented whole language program and group assignments to enrich vocabulary and learning engagement.'
+  ],
+  icon: Users,
+  highlights: ['Early Childhood Education','Montessori Facilitation','Behavioral Assessment','Wellness & Mindfulness','Curriculum Implementation','Student Engagement']
+},
+{
+  year: 'May 2010 - Aug 2013',
+  title: 'Vice Principal & Academic Leader',
+  organization: 'Mount Litera Zee School',
+  bullets: [
+    'Started as an Illume-certified KG teacher, facilitating early years learning and Montessori sessions.',
+    'Handled admissions enquiries, educated parents about curriculum, and processed applications.',
+    'Organized and conducted teacher training programs, enhancing computer literacy and teaching skills.',
+    'Managed school administration: inventory, records, fee collection, ESI/PF proceedings, and supervision of staff.',
+    'Played a key role in marketing, brand-building events, and as MC for "Mount Litera Fest".',
+    'Interviewed potential employees, supervised demo/observation classes, and onboarded teaching/admin staff.',
+    'Planned budgets, school events, and parent induction sessions end-to-end.',
+    'Taught Mathematics for pre-primary classes while facilitating hiring of permanent staff.',
+    'Acted as single point of contact for parent concerns regarding academics, behavior, and transport.',
+    'Framed and implemented school policies and procedures in alignment with Zee Learn guidelines.',
+    'Managed entrance exams, evaluations, and assessments for student admissions.',
+    'Active member of the Blue Ribbon program addressing child protection and safety.'
+  ],
+  icon: Building,
+  highlights: ['Leadership & Administration','Teacher Training','Admissions & Parent Engagement','Curriculum Implementation','Event & Budget Management','Student Safety & Welfare','Staff Recruitment & Mentorship']
+}
+
 ];
 
 export default function ExperienceSection() {
