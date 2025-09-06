@@ -86,7 +86,7 @@ const experiences = [
 ];
 
 export default function ExperienceSection() {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -109,18 +109,17 @@ export default function ExperienceSection() {
             A timeline of educational excellence and transformative leadership
           </p>
         </div>
-
-        {/* Outer container with horizontal scroll only */}
+        {/* Outer container with horizontal scroll */}
         <div className="relative max-w-6xl mx-auto">
           <Button
             variant="outline"
             size="icon"
             onClick={scrollLeft}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
+            aria-label="Scroll Left"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth px-12 py-4"
@@ -130,7 +129,7 @@ export default function ExperienceSection() {
               return (
                 <Card
                   key={index}
-                  className="flex-shrink-0 w-[80%] md:w-[45%] max-h-[500px] flex flex-col bg-card shadow-elegant"
+                  className="flex-shrink-0 w-[300px] md:w-[400px] max-h-[480px] flex flex-col bg-card shadow-elegant"
                 >
                   <CardContent className="flex flex-col h-full p-6">
                     <div className="flex items-start gap-4 flex-1">
@@ -141,9 +140,8 @@ export default function ExperienceSection() {
                         <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
                         <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                         <p className="text-accent font-medium mb-3">{exp.organization}</p>
-
                         {/* Bullets with vertical scroll */}
-                        <div className="flex-1 overflow-y-auto pr-2 mb-4">
+                        <div className="flex-1 overflow-y-auto pr-2 mb-4 max-h-[240px]">
                           <div className="space-y-2">
                             {exp.bullets.map((bullet, i) => (
                               <div key={i} className="flex items-start gap-2">
@@ -153,7 +151,6 @@ export default function ExperienceSection() {
                             ))}
                           </div>
                         </div>
-
                         {/* Highlights */}
                         <div className="flex flex-wrap gap-2 mt-auto">
                           {exp.highlights.map((highlight, i) => (
@@ -172,12 +169,12 @@ export default function ExperienceSection() {
               );
             })}
           </div>
-
           <Button
             variant="outline"
             size="icon"
             onClick={scrollRight}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
+            aria-label="Scroll Right"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
