@@ -110,7 +110,7 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        {/* Outer container */}
+        {/* Outer container with horizontal scroll only */}
         <div className="relative max-w-6xl mx-auto">
           <Button
             variant="outline"
@@ -123,14 +123,14 @@ export default function ExperienceSection() {
 
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth px-12 py-4"
+            className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth px-12 py-4"
           >
             {experiences.map((exp, index) => {
               const Icon = exp.icon;
               return (
                 <Card
                   key={index}
-                  className="flex-shrink-0 w-[80%] md:w-[45%] max-h-[480px] flex flex-col bg-card shadow-elegant"
+                  className="flex-shrink-0 w-[80%] md:w-[45%] max-h-[500px] flex flex-col bg-card shadow-elegant"
                 >
                   <CardContent className="flex flex-col h-full p-6">
                     <div className="flex items-start gap-4 flex-1">
