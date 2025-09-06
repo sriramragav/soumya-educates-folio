@@ -199,10 +199,7 @@ export default function PortfolioSection() {
     <section id="portfolio" className="py-20 bg-soft-gradient">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Areas of Expertise</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Specialized knowledge and proven track record across diverse educational domains
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Qualifications</h2>
         </div>
 
         {/* Degrees & Certifications */}
@@ -295,7 +292,7 @@ export default function PortfolioSection() {
 
         {/* Core Specializations */}
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center">Core Specializations</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">Skills</h3>
           <div className="relative max-w-7xl mx-auto">
             {/* Left button */}
             <button
