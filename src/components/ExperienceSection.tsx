@@ -20,34 +20,20 @@ const experiences = [
     highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination']
   },
   {
-  year: 'Oct 2019 - Oct 2023',
-  title: 'Freelance Online Math & Physics Tutor',
-  organization: 'Self-employed',
+  year: 'Jul 2018 - Oct 2023',
+  title: 'Freelance & Online Math & Physics Instructor',
+  organization: 'Self-employed / Catalyze Center for Learning / Vidyalai',
   bullets: [
-    'Tutored IB, IGCSE, ICSE, and CBSE Math & Physics (Grades 8–12).',
-    'Guided students through past papers to strengthen concept application.',
+    'Tutored Math & Physics online for IB, IGCSE, ICSE, CBSE, Edexcel, Australian, New Zealand, and Singapore curricula (Grades 8–12).',
+    'Guided students through past papers, assessments, and board exam preparation to strengthen concept application.',
     'Developed concepts, experimental procedures, and mathematical modeling for IBDP IA projects (HL & SL).',
-    'Provided solutions and one-on-one guidance for textbook problems and past papers.',
-    'Conducted periodic unit tests and exam revision with focus on weak areas.'
+    'Designed academic assessments, trained teachers, and created individualized study plans for students.',
+    'Provided solutions, one-on-one guidance, and periodic tests to address grey areas and improve performance.'
   ],
   icon: Users,
-  highlights: ['IB/IGCSE/CBSE Tutoring', 'Concept Development', 'Experimental & Mathematical Modeling', 'Exam Preparation', 'One-on-One Mentorship']
+  highlights: ['Online Tutoring','Curriculum Design','Concept Development','Assessment & Feedback','Personalized Learning','IBDP IA Mentorship']
 },
 
-{
-  year: 'Jul 2018 - Sep 2019',
-  title: 'Academic Coordinator & Online Instructor',
-  organization: 'Catalyze Center for Learning / Vidyalai',
-  bullets: [
-    'Designed academic assessment procedures and trained teachers across curricula.',
-    'Tutored Math & Physics for students (IB, IGCSE, Edexcel, Australian, New Zealand, Singapore curricula) up to Grade 10.',
-    'Organized, analyzed, and presented syllabi for multiple grades and curricula.',
-    'Conducted assessments, provided feedback, and prepared students for board exams.',
-    'Created individualized study plans addressing grey areas to maximize student performance.'
-  ],
-  icon: GraduationCap,
-  highlights: ['Curriculum Design','Teacher Training','International Tutoring','Assessment & Feedback','Personalized Learning Plans']
-},
 {
   year: 'Jun 2017 - Mar 2018',
   title: 'Academic Coordinator',
