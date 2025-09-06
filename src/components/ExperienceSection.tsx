@@ -90,57 +90,78 @@ function debounce(func: (...args: any[]) => void, wait: number) {
 
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [cardWidth, setCardWidth] = useState(0);
+  const [cardFullWidth, setCardFullWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Calculate card width on mount and window resize
+  // Detect mobile and measure card full width (card + gap)
   useEffect(() => {
-    const updateCardWidth = () => {
-      if (scrollRef.current) {
-        const containerWidth = scrollRef.current.offsetWidth;
-        setCardWidth(containerWidth - 40); // Show partial next card (40px)
-      }
-    };
-    updateCardWidth();
-
     function handleResize() {
       setIsMobile(window.innerWidth < 768);
-      updateCardWidth();
+      // Measure card full width including gap for desktop
+      if (scrollRef.current) {
+        const container = scrollRef.current;
+        const cards = container.children;
+        if (cards.length > 0) {
+          const firstCard = cards[0] as HTMLElement;
+          const cardWidth = firstCard.offsetWidth;
+          let gapWidth = 0;
+          if (cards.length > 1) {
+            const secondCard = cards[1] as HTMLElement;
+            gapWidth = secondCard.offsetLeft - firstCard.offsetLeft - cardWidth;
+            if (gapWidth < 0) gapWidth = 0;
+          }
+          setCardFullWidth(cardWidth + gapWidth);
+        }
+      }
     }
 
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Debounced scroll listener to update currentIndex based on scroll position
+  // Update buttons enabled state based on scroll position
   useEffect(() => {
-    if (!scrollRef.current) return;
+    function updateScrollButtons() {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 5); // small buffer for rounding
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+
+    if (scrollRef.current) {
+      updateScrollButtons();
+      scrollRef.current.addEventListener('scroll', updateScrollButtons);
+      return () => scrollRef.current?.removeEventListener('scroll', updateScrollButtons);
+    }
+  }, []);
+
+  // Update currentIndex on scroll to sync dots
+  useEffect(() => {
+    if (!scrollRef.current || cardFullWidth === 0) return;
     const container = scrollRef.current;
 
     const onScroll = debounce(() => {
       const scrollLeft = container.scrollLeft;
-
-      // Compute index approximately by dividing scrollLeft by cardWidth (including gap)
-      if (cardWidth > 0) {
-        const idx = Math.round(scrollLeft / cardWidth);
-        setCurrentIndex(Math.min(Math.max(idx, 0), experiences.length - 1));
-      }
+      const idx = Math.round(scrollLeft / cardFullWidth);
+      setCurrentIndex(idx);
     }, 100);
 
     container.addEventListener('scroll', onScroll);
     return () => container.removeEventListener('scroll', onScroll);
-  }, [cardWidth]);
+  }, [cardFullWidth]);
 
-  // Scroll to card index on dot click
+  // Scroll to desired card index (for dots and navigation)
   function goToIndex(idx: number) {
-    if (scrollRef.current && cardWidth > 0) {
-      scrollRef.current.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ left: cardFullWidth * idx, behavior: 'smooth' });
       setCurrentIndex(idx);
     }
   }
 
-  // Scroll handlers for buttons
   const scrollLeft = () => {
     if (scrollRef.current) {
       const newIndex = Math.max(currentIndex - 1, 0);
@@ -169,9 +190,9 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
             aria-label="Scroll Left"
-            disabled={currentIndex === 0}
+            disabled={!canScrollLeft}
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -184,7 +205,7 @@ export default function ExperienceSection() {
               <Card 
                 key={index}
                 className="flex-shrink-0 snap-center bg-card shadow-elegant"
-                style={{ width: cardWidth || '90vw', maxWidth: '400px', maxHeight: '440px', scrollSnapAlign: 'center' }}
+                style={{ width: '90vw', maxWidth: '400px', maxHeight: '440px', scrollSnapAlign: 'center' }}
               >
                 <CardContent className="flex flex-col h-full p-5">
                   <div className="flex flex-col h-full">
@@ -220,9 +241,9 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
             aria-label="Scroll Right"
-            disabled={currentIndex === experiences.length - 1}
+            disabled={!canScrollRight}
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
