@@ -1,4 +1,7 @@
-import { GraduationCap, Building, Users, Award } from 'lucide-react';
+import { GraduationCap, Building, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 const experiences = [
   {
@@ -36,6 +39,16 @@ const experiences = [
 ];
 
 export default function ExperienceSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => Math.max(0, prevIndex - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => Math.min(experiences.length - 1, prevIndex + 1));
+  };
+
   return (
     <section id="experience" className="py-20">
       <div className="section-container">
@@ -46,54 +59,74 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border transform md:-translate-x-0.5"></div>
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => {
-              const Icon = exp.icon;
-              return (
-                <div
-                  key={index}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-primary rounded-full transform md:-translate-x-1.5 z-10"></div>
-                  
-                  {/* Content card */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className="bg-card p-6 rounded-lg shadow-soft hover:shadow-elegant transition-shadow">
-                      <div className="flex items-start gap-4">
-                        <div className="bg-primary text-primary-foreground p-3 rounded-lg">
-                          <Icon className="h-6 w-6" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
-                          <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
-                          <p className="text-accent font-medium mb-3">{exp.organization}</p>
-                          <p className="text-muted-foreground mb-4 leading-relaxed">
-                            {exp.description}
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {exp.highlights.map((highlight, i) => (
-                              <span
-                                key={i}
-                                className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm"
-                              >
-                                {highlight}
-                              </span>
-                            ))}
+        <div className="relative max-w-4xl mx-auto">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {experiences.map((exp, index) => {
+                const Icon = exp.icon;
+                return (
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <Card className="bg-card shadow-elegant">
+                      <CardContent className="p-8">
+                        <div className="flex items-start gap-6">
+                          <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                            <Icon className="h-8 w-8" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-medium text-primary mb-2">{exp.year}</div>
+                            <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
+                            <p className="text-accent font-medium mb-4">{exp.organization}</p>
+                            <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
+                              {exp.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {exp.highlights.map((highlight, i) => (
+                                <span
+                                  key={i}
+                                  className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm"
+                                >
+                                  {highlight}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={goToPrevious}
+              disabled={currentIndex === 0}
+              className="h-10 w-10"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            
+            <span className="text-muted-foreground font-medium">
+              {currentIndex + 1} of {experiences.length}
+            </span>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={goToNext}
+              disabled={currentIndex === experiences.length - 1}
+              className="h-10 w-10"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>
