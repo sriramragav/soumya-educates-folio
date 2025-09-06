@@ -4,6 +4,10 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 bg-soft-gradient">
+      <div>
+         <h2 className="text-4xl md:text-5xl font-bold mb-4">About Soumya</h2>
+         <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
+      </div>
       <div className="section-container max-w-4xl mx-auto">
         <div className="flex flex-col gap-12 items-center">
           {/* Video Section */}
@@ -20,10 +24,7 @@ export default function AboutSection() {
 
           {/* About Content */}
           <div className="space-y-6 text-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">About Soumya</h2>
-              <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
-            </div>
+            
             
             <div className="space-y-6 text-lg leading-relaxed max-w-3xl mx-auto text-muted-foreground">
               <p>
