@@ -9,7 +9,7 @@ const subjects = [
   description: 'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
   icon: Globe,
   level: 'All Levels'
-  }
+  },
   {
     title: 'Curriculum Development',
     description: 'Designing comprehensive educational programs aligned with learning outcomes',
