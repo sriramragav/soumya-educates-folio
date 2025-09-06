@@ -93,6 +93,7 @@ export default function ExperienceSection() {
   const [cardWidth, setCardWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0); // 0 to 100%
 
   // Calculate card width on mount and window resize
   useEffect(() => {
@@ -113,13 +114,18 @@ export default function ExperienceSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Debounced scroll listener to update currentIndex based on scroll position
+  // Debounced scroll listener to update currentIndex and scrollProgress based on scroll position
   useEffect(() => {
     if (!scrollRef.current) return;
     const container = scrollRef.current;
 
     const onScroll = debounce(() => {
       const scrollLeft = container.scrollLeft;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      // Compute scroll progress percentage (0 to 100)
+      const progress = maxScrollLeft > 0 ? (scrollLeft / maxScrollLeft) * 100 : 0;
+      setScrollProgress(progress);
 
       // Compute index approximately by dividing scrollLeft by cardWidth (including gap)
       if (cardWidth > 0) {
@@ -178,7 +184,7 @@ export default function ExperienceSection() {
           <div 
             ref={scrollRef}
             className="flex gap-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth px-4"
-            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'auto' /* for Firefox */ }}
+            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'auto' }}
           >
             {experiences.map((exp, index) => (
               <Card 
@@ -245,6 +251,15 @@ export default function ExperienceSection() {
           </div>
         )}
 
+        {/* Mobile scroll progress bar */}
+        {isMobile && (
+          <div className="mt-2 h-1 w-full bg-gray-300 rounded overflow-hidden mx-4">
+            <div
+              className="h-full bg-indigo-700 rounded transition-all duration-150"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
