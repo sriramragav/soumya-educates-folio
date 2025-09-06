@@ -224,7 +224,7 @@ export default function PortfolioSection() {
             {/* Cards */}
             <div
               ref={certsRef}
-              className="flex gap-6 overflow-x-scroll scrollbar scrollbar-thumb-indigo-400 scrollbar-track-gray-200 snap-x snap-mandatory scroll-smooth px-12"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-12 scrollbar-hide"
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {certifications.map((cert, index) => (
@@ -308,7 +308,7 @@ export default function PortfolioSection() {
             {/* Cards */}
             <div
               ref={subjectsRef}
-              className="flex gap-6 overflow-x-scroll scrollbar scrollbar-thumb-indigo-400 scrollbar-track-gray-200 snap-x snap-mandatory scroll-smooth px-12"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-12 scrollbar-hide"
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {subjects.map((subject, index) => {
