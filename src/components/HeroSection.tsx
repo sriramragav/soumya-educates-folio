@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import React, { useState } from "react";
 import { Download, FileText } from 'lucide-react';
 import soumyaHeadshot from '@/assets/SoumyaSpeaking.jpeg';
 import ResumeModal from "./ResumeModal";
