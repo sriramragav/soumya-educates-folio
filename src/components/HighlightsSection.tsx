@@ -68,7 +68,7 @@ export default function ScrollableHighlightsAndSkills() {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
     setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1); // minor adjustment for rounding
   }
 
   function scrollLeft() {
@@ -103,7 +103,7 @@ export default function ScrollableHighlightsAndSkills() {
           <button
             onClick={scrollLeft}
             aria-label="Scroll left"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 md:p-2"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800"
           >
             <ChevronLeft size={28} />
           </button>
@@ -112,7 +112,7 @@ export default function ScrollableHighlightsAndSkills() {
           <button
             onClick={scrollRight}
             aria-label="Scroll right"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 md:p-2"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800"
           >
             <ChevronRight size={28} />
           </button>
@@ -122,7 +122,7 @@ export default function ScrollableHighlightsAndSkills() {
         <div
           ref={scrollRef}
           onScroll={updateScrollButtons}
-          className="flex overflow-x-auto space-x-6 scrollbar-hide px-2 md:px-0"
+          className="flex overflow-x-auto space-x-6 scrollbar-hide px-6"
         >
           {highlightsAndSkills.map(({ title, icon, description }, idx) => (
             <Card
