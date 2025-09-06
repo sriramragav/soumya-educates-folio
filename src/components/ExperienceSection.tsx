@@ -65,49 +65,50 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Carousel Container */}
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              style={{ transform: `translateX(-${currentIndex * 90}%)` }} // 90% width for partial peek
             >
               {experiences.map((exp, index) => {
                 const Icon = exp.icon;
                 return (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <Card className="bg-card shadow-elegant h-[500px]">
-                      <CardContent className="p-8 h-full flex flex-col">
-                        <div className="flex items-start gap-6 flex-1">
-                          <div className="bg-primary text-primary-foreground p-4 rounded-lg flex-shrink-0">
-                            <Icon className="h-8 w-8" />
+                  <div key={index} className="flex-shrink-0 w-[85%] md:w-[45%] px-3">
+                    <Card className="bg-card shadow-elegant max-h-[450px] md:max-h-[500px] flex flex-col">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        <div className="flex items-start gap-4 flex-1">
+                          <div className="bg-primary text-primary-foreground p-3 rounded-lg flex-shrink-0">
+                            <Icon className="h-6 w-6" />
                           </div>
                           <div className="flex-1 flex flex-col h-full">
-                            <div className="text-sm font-medium text-primary mb-2">{exp.year}</div>
-                            <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
-                            <p className="text-accent font-medium mb-4">{exp.organization}</p>
-                            
+                            <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
+                            <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
+                            <p className="text-accent font-medium mb-3">{exp.organization}</p>
+
                             {exp.bullets ? (
-                              <ScrollArea className="flex-1 mb-6 pr-4">
-                                <div className="space-y-3">
+                              <ScrollArea className="flex-1 mb-4 pr-2">
+                                <div className="space-y-2">
                                   {exp.bullets.map((bullet, i) => (
                                     <div key={i} className="flex items-start gap-2">
-                                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                      <p className="text-muted-foreground leading-relaxed">{bullet}</p>
+                                      <div className="w-2 h-2 bg-primary rounded-full mt-1 flex-shrink-0"></div>
+                                      <p className="text-muted-foreground leading-relaxed text-sm">{bullet}</p>
                                     </div>
                                   ))}
                                 </div>
                               </ScrollArea>
                             ) : (
-                              <p className="text-muted-foreground mb-6 leading-relaxed text-lg flex-1">
+                              <p className="text-muted-foreground mb-4 leading-relaxed text-sm flex-1">
                                 {exp.description}
                               </p>
                             )}
-                            
+
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {exp.highlights.map((highlight, i) => (
                                 <span
                                   key={i}
-                                  className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm"
+                                  className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
                                 >
                                   {highlight}
                                 </span>
@@ -135,13 +136,14 @@ export default function ExperienceSection() {
               <ChevronLeft className="h-4 w-4" />
             </Button>
             
+            {/* Dots */}
             <div className="flex gap-2">
               {experiences.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    currentIndex === index ? 'bg-primary' : 'bg-muted'
+                  className={`w-3 h-3 rounded-full transition-colors border-2 ${
+                    currentIndex === index ? 'bg-primary border-primary' : 'bg-white border-gray-400'
                   }`}
                 />
               ))}
