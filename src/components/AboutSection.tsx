@@ -26,24 +26,26 @@ export default function AboutSection() {
             
             <div className="space-y-6 text-lg leading-relaxed">
               <p className="text-muted-foreground">
-                With over 15 years of experience in education, Soumya Mulubagula has dedicated 
-                her career to revolutionizing the way students learn and engage with knowledge. 
-                Her innovative approach combines traditional pedagogical wisdom with cutting-edge 
-                educational technologies.
+                My journey into education has been shaped by an unusual academic path 
+                — an engineering degree (B.E.) and a management qualification (M.B.A.) 
+                that might have led me into the corporate world, followed by a B.Ed. 
+                that anchored my choice to teach. That blend of technical rigor, 
+                organizational perspective, and pedagogy has become the foundation of my work as an educator.
               </p>
               
               <p className="text-muted-foreground">
-                Soumya specializes in curriculum development, educational leadership, and 
-                student-centered learning methodologies. She has successfully implemented 
-                numerous educational programs that have significantly improved student outcomes 
-                and engagement across diverse learning environments.
+                Today, I teach Physics to Classes VIII–X at the Narayana Group of Institutions, 
+                an environment known for its rigorous focus on IIT-JEE preparation. In this role, 
+                I strive to simplify complex concepts, sharpen problem-solving skills, and nurture 
+                curiosity, so that students grow not only as exam-ready learners but as confident thinkers.
               </p>
               
               <p className="text-muted-foreground">
-                Her passion for lifelong learning and commitment to educational excellence 
-                has made her a sought-after consultant and speaker in the education sector. 
-                She believes in creating inclusive learning spaces where every student can 
-                thrive and reach their maximum potential.
+               Over the past 15+ years, I have also served as vice principal, academic coordinator, 
+                online tutor, and curriculum content creator. Living in the US broadened my perspective 
+                further, exposing me to diverse cultures and teaching approaches. Across all these 
+                experiences, one belief has stayed constant: education is most powerful when it combines 
+                clarity, empathy, and resilience — preparing young people to thrive both in the classroom and beyond.
               </p>
             </div>
           </div>
