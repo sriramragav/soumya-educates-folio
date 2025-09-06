@@ -59,6 +59,8 @@ const highlightsAndSkills = [
   },
 ];
 
+// ... other imports and code unchanged ...
+
 export default function ScrollableHighlightsAndSkills() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -73,10 +75,18 @@ export default function ScrollableHighlightsAndSkills() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Scroll to current card on index change
   useEffect(() => {
-    if (scrollRef.current && isMobile) {
+    if (scrollRef.current) {
       const container = scrollRef.current;
-      const cardWidth = container.clientWidth;
+      let cardWidth = container.clientWidth;
+      if (!isMobile) {
+        // On desktop approximate card width with first child's offsetWidth + spacing (e.g. 24px = 6 spacing * 4)
+        const firstCard = container.querySelector('div > div'); // depends on your Card markup
+        if (firstCard instanceof HTMLElement) {
+          cardWidth = firstCard.offsetWidth + 24; // 24 = space-x-6 * 4 (px)
+        }
+      }
       container.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
     }
   }, [currentIndex, isMobile]);
@@ -160,22 +170,20 @@ export default function ScrollableHighlightsAndSkills() {
           ))}
         </div>
 
-        {/* Dots navigation on mobile */}
-        {isMobile && (
-          <div className="flex justify-center mt-6 space-x-3">
-            {highlightsAndSkills.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goToIndex(idx)}
-                aria-label={`Go to card ${idx + 1}`}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
-                }`}
-                aria-current={idx === currentIndex ? 'true' : undefined}
-              />
-            ))}
-          </div>
-        )}
+        {/* Dots navigation on all screen sizes */}
+        <div className="flex justify-center mt-6 space-x-3">
+          {highlightsAndSkills.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goToIndex(idx)}
+              aria-label={`Go to card ${idx + 1}`}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
+              }`}
+              aria-current={idx === currentIndex ? 'true' : undefined}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
