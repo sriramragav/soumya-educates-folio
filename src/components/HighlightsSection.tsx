@@ -59,14 +59,6 @@ const highlightsAndSkills = [
   },
 ];
 
-function debounce(func: () => void, wait: number) {
-  let timeout: ReturnType<typeof setTimeout>;
-  return () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(func, wait);
-  };
-}
-
 export default function ScrollableHighlightsAndSkills() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,73 +73,28 @@ export default function ScrollableHighlightsAndSkills() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Improved scroll handler
   useEffect(() => {
-    if (!scrollRef.current) return;
-    const container = scrollRef.current;
-
-    const handleScroll = debounce(() => {
-      if (!container) return;
-      const scrollLeft = container.scrollLeft;
-
-      // Measure card width including margin
-      const cards = container.children;
-      if (!cards || cards.length === 0) return;
-      const firstCard = cards[0] as HTMLElement;
-      const cardRect = firstCard.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
-
-      // Calculate card full width (including right margin/gap)
-      const cardWidth = cardRect.width;
-      let gapWidth = 0;
-
-      if (cards.length > 1) {
-        const secondCard = cards[1] as HTMLElement;
-        const gap = secondCard.offsetLeft - firstCard.offsetLeft - cardWidth;
-        gapWidth = gap > 0 ? gap : 0;
-      }
-
-      const fullCardWidth = cardWidth + gapWidth;
-
-      // Calculate index by dividing scrollLeft by full card width
-      let idx = Math.round(scrollLeft / fullCardWidth);
-      // Clamp idx in valid range
-      idx = Math.min(Math.max(idx, 0), highlightsAndSkills.length - 1);
-
-      setCurrentIndex(idx);
-    }, 100);
-
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
-
-  // Scroll to current card when index changes programmatically
-  useEffect(() => {
-    if (!scrollRef.current) return;
-    const container = scrollRef.current;
-    const cards = container.children;
-    if (!cards || cards.length === 0) return;
-    const firstCard = cards[0] as HTMLElement;
-    const cardRect = firstCard.getBoundingClientRect();
-
-    // Calculate card full width including gap
-    let gapWidth = 0;
-    if (cards.length > 1) {
-      const secondCard = cards[1] as HTMLElement;
-      gapWidth = secondCard.offsetLeft - firstCard.offsetLeft - cardRect.width;
-      if (gapWidth < 0) gapWidth = 0;
+    if (scrollRef.current && isMobile) {
+      const container = scrollRef.current;
+      const cardWidth = container.clientWidth;
+      container.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
     }
-    const fullCardWidth = cardRect.width + gapWidth;
-
-    container.scrollTo({ left: fullCardWidth * currentIndex, behavior: 'smooth' });
-  }, [currentIndex]);
+  }, [currentIndex, isMobile]);
 
   function scrollLeft() {
-    setCurrentIndex((idx) => Math.max(0, idx - 1));
+    if (isMobile) {
+      setCurrentIndex((idx) => Math.max(0, idx - 1));
+    } else if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
   }
 
   function scrollRight() {
-    setCurrentIndex((idx) => Math.min(highlightsAndSkills.length - 1, idx + 1));
+    if (isMobile) {
+      setCurrentIndex((idx) => Math.min(highlightsAndSkills.length - 1, idx + 1));
+    } else if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
   }
 
   function goToIndex(idx: number) {
@@ -171,7 +118,7 @@ export default function ScrollableHighlightsAndSkills() {
         <button
           onClick={scrollLeft}
           aria-label="Scroll left"
-          disabled={currentIndex === 0}
+          disabled={isMobile ? currentIndex === 0 : false}
           className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
         >
           <ChevronLeft size={28} />
@@ -179,7 +126,7 @@ export default function ScrollableHighlightsAndSkills() {
         <button
           onClick={scrollRight}
           aria-label="Scroll right"
-          disabled={currentIndex === highlightsAndSkills.length - 1}
+          disabled={isMobile ? currentIndex === highlightsAndSkills.length - 1 : false}
           className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
         >
           <ChevronRight size={28} />
@@ -188,13 +135,21 @@ export default function ScrollableHighlightsAndSkills() {
         {/* Scrollable container */}
         <div
           ref={scrollRef}
-          className={`flex overflow-x-auto space-x-6 scrollbar-hide px-6`}
-          style={{ scrollSnapType: 'x mandatory' }}
+          className={`
+            flex
+            ${isMobile ? 'overflow-hidden' : 'overflow-x-auto'}
+            space-x-6 scrollbar-hide
+            ${isMobile ? 'snap-x snap-mandatory' : ''}
+            px-6
+          `}
         >
           {highlightsAndSkills.map(({ title, icon, description }, idx) => (
             <Card
               key={idx}
-              className={`flex-shrink-0 bg-white backdrop-blur-sm bg-opacity-90 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 min-w-[280px] max-w-[320px] snap-start`}
+              className={`
+                flex-shrink-0 bg-white backdrop-blur-sm bg-opacity-90 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300
+                ${isMobile ? 'w-full snap-start' : 'min-w-[280px] max-w-[320px]'}
+              `}
             >
               <CardContent className="flex flex-col items-center text-center p-8 space-y-6 h-full">
                 <div className="text-6xl">{icon}</div>
@@ -205,20 +160,22 @@ export default function ScrollableHighlightsAndSkills() {
           ))}
         </div>
 
-        {/* Dots navigation */}
-        <div className="flex justify-center mt-6 space-x-3">
-          {highlightsAndSkills.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => goToIndex(idx)}
-              aria-label={`Go to card ${idx + 1}`}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
-              }`}
-              aria-current={idx === currentIndex ? 'true' : undefined}
-            />
-          ))}
-        </div>
+        {/* Dots navigation only on mobile */}
+        {isMobile && (
+          <div className="flex justify-center mt-6 space-x-3">
+            {highlightsAndSkills.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToIndex(idx)}
+                aria-label={`Go to card ${idx + 1}`}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
+                }`}
+                aria-current={idx === currentIndex ? 'true' : undefined}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
