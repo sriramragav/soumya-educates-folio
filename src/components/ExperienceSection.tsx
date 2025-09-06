@@ -1,16 +1,22 @@
 import { GraduationCap, Building, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { useState } from 'react';
 
 const experiences = [
   {
-    year: '2020 - Present',
-    title: 'Senior Educational Consultant',
-    organization: 'EdTech Innovations Pvt. Ltd.',
-    description: 'Leading curriculum design and implementation for K-12 schools across multiple states. Developed innovative assessment frameworks that improved student performance by 40%.',
+    year: 'Nov 2023 - Present',
+    title: 'Academic Content Creator',
+    organization: 'Velammal Knowledge Park',
+    bullets: [
+      'Authored Math workbooks (Grades 1–8) & created revision/test flashcards.',
+      'Reviewed Physics content and provided constructive feedback to team.',
+      'Planned & implemented curriculum, including bridge courses for primary grades.',
+      'Trained teachers & collaborated with LMS team for online concept revisions.'
+    ],
     icon: Building,
-    highlights: ['Curriculum Development', 'Teacher Training', 'Assessment Design']
+    highlights: ['Teaching Excellence', 'Mentorship', 'Department Leadership']
   },
   {
     year: '2017 - 2020',
@@ -69,20 +75,35 @@ export default function ExperienceSection() {
                 const Icon = exp.icon;
                 return (
                   <div key={index} className="w-full flex-shrink-0 px-4">
-                    <Card className="bg-card shadow-elegant">
-                      <CardContent className="p-8">
-                        <div className="flex items-start gap-6">
-                          <div className="bg-primary text-primary-foreground p-4 rounded-lg">
+                    <Card className="bg-card shadow-elegant h-[500px]">
+                      <CardContent className="p-8 h-full flex flex-col">
+                        <div className="flex items-start gap-6 flex-1">
+                          <div className="bg-primary text-primary-foreground p-4 rounded-lg flex-shrink-0">
                             <Icon className="h-8 w-8" />
                           </div>
-                          <div className="flex-1">
+                          <div className="flex-1 flex flex-col h-full">
                             <div className="text-sm font-medium text-primary mb-2">{exp.year}</div>
                             <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
                             <p className="text-accent font-medium mb-4">{exp.organization}</p>
-                            <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
-                              {exp.description}
-                            </p>
-                            <div className="flex flex-wrap gap-2">
+                            
+                            {exp.bullets ? (
+                              <ScrollArea className="flex-1 mb-6 pr-4">
+                                <div className="space-y-3">
+                                  {exp.bullets.map((bullet, i) => (
+                                    <div key={i} className="flex items-start gap-2">
+                                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                                      <p className="text-muted-foreground leading-relaxed">{bullet}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </ScrollArea>
+                            ) : (
+                              <p className="text-muted-foreground mb-6 leading-relaxed text-lg flex-1">
+                                {exp.description}
+                              </p>
+                            )}
+                            
+                            <div className="flex flex-wrap gap-2 mt-auto">
                               {exp.highlights.map((highlight, i) => (
                                 <span
                                   key={i}
@@ -114,9 +135,17 @@ export default function ExperienceSection() {
               <ChevronLeft className="h-4 w-4" />
             </Button>
             
-            <span className="text-muted-foreground font-medium">
-              {currentIndex + 1} of {experiences.length}
-            </span>
+            <div className="flex gap-2">
+              {experiences.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    currentIndex === index ? 'bg-primary' : 'bg-muted'
+                  }`}
+                />
+              ))}
+            </div>
             
             <Button
               variant="outline"
