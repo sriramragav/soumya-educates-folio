@@ -102,9 +102,9 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-16">
       <div className="section-container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Journey</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A timeline of educational excellence and transformative leadership
@@ -129,7 +129,7 @@ export default function ExperienceSection() {
           </Button>
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-y-hidden scroll-smooth px-12 py-4"
+            className="flex gap-6 overflow-y-hidden scroll-smooth px-12 py-3"
             style={{ scrollBehavior: 'smooth' }}
           >
             {experiences.map((exp, index) => {
@@ -137,9 +137,9 @@ export default function ExperienceSection() {
               return (
                 <Card
                   key={index}
-                  className="flex-shrink-0 w-[300px] md:w-[400px] max-h-[480px] flex flex-col bg-card shadow-elegant"
+                  className="flex-shrink-0 w-[300px] md:w-[400px] max-h-[440px] flex flex-col bg-card shadow-elegant"
                 >
-                  <CardContent className="flex flex-col h-full p-6">
+                  <CardContent className="flex flex-col h-full p-5">
                     <div className="flex items-start gap-4 flex-1">
                       <div className="bg-primary text-primary-foreground p-3 rounded-lg flex-shrink-0">
                         <Icon className="h-6 w-6" />
@@ -149,7 +149,7 @@ export default function ExperienceSection() {
                         <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                         <p className="text-accent font-medium mb-3">{exp.organization}</p>
                         {/* Combined bullets + highlights scrollable */}
-                        <div className="flex-1 overflow-y-auto pr-2 mb-4 max-h-[280px] flex flex-col">
+                        <div className="flex-1 overflow-y-auto pr-2 mb-2 max-h-[240px] flex flex-col">
                           <div className="space-y-2 mb-4">
                             {exp.bullets.map((bullet, i) => (
                               <div key={i} className="flex items-start gap-2">
