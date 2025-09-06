@@ -4,42 +4,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const highlightsAndSkills = [
   {
-    title: 'Educational Leadership & Mentorship',
-    icon: '👩‍🏫',
-    description:
-      'Rose from teacher to Vice Principal in 2 years, successfully managing and mentoring a team of over 30 educators.',
-  },
-  {
-    title: 'Admissions Success Rate',
-    icon: '🎯',
-    description:
-      'Converted 70% of enquiries into admissions, building strong trust with parents and families.',
-  },
-  {
-    title: 'Student Development & Guidance',
-    icon: '🎓',
-    description:
-      'Mentored students across kindergarten to grade 12 in IB, IGCSE, and other curricula, fostering academic excellence.',
-  },
-  {
-    title: 'Academic Content Development',
-    icon: '📚',
-    description:
-      'Designed math workbooks and revision materials for grades 1-8, contributing to curriculum planning and execution.',
-  },
-  {
-    title: 'Operational Excellence & Innovation',
-    icon: '⚙️',
-    description:
-      'Streamlined school processes and led initiatives like newsletters that enhanced community engagement.',
-  },
-  {
-    title: 'Wellness & Holistic Leadership',
-    icon: '🧘‍♀️',
-    description:
-      'Certified Level 1 Pranic Healer; conducted pranayama and mindfulness sessions promoting student wellness.',
-  },
-  {
     title: 'Learner-Centered Teaching',
     icon: '🌱',
     description:
@@ -52,10 +16,46 @@ const highlightsAndSkills = [
       'Experienced in creating diverse assessments aligned with international standards for Math and Physics.',
   },
   {
+    title: 'Educational Leadership & Mentorship',
+    icon: '👩‍🏫',
+    description:
+      'Rose from teacher to Vice Principal in 2 years, successfully managing and mentoring a team of over 30 educators.',
+  },
+  {
+    title: 'Student Development & Guidance',
+    icon: '🎓',
+    description:
+      'Mentored students across kindergarten to grade 12 in IB, IGCSE, and other curricula, fostering academic excellence.',
+  },
+  {
     title: 'Effective Communication & Relationship Building',
     icon: '🗣️',
     description:
       'Strong communicator with a proven track record in engaging students, parents, and academic teams.',
+  },
+  {
+    title: 'Academic Content Development',
+    icon: '📚',
+    description:
+      'Designed math workbooks and revision materials for grades 1-8, contributing to curriculum planning and execution.',
+  },
+  {
+    title: 'Admissions Success Rate',
+    icon: '🎯',
+    description:
+      'Converted 70% of enquiries into admissions, building strong trust with parents and families.',
+  },
+  {
+    title: 'Operational Excellence & Innovation',
+    icon: '⚙️',
+    description:
+      'Streamlined school processes and led initiatives like newsletters that enhanced community engagement.',
+  },
+  {
+    title: 'Wellness & Holistic Leadership',
+    icon: '🧘‍♀️',
+    description:
+      'Certified Level 1 Pranic Healer; conducted pranayama and mindfulness sessions promoting student wellness.',
   },
 ];
 
