@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 const navigation = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Highlights', href: '#highlights' },
   { name: 'Experience', href: '#experience' },
   { name: 'Portfolio', href: '#portfolio' },
   { name: 'Testimonials', href: '#testimonials' },
