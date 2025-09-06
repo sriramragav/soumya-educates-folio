@@ -23,14 +23,14 @@ export default function HeroSection() {
           
           <div className="space-y-4">
             <h1 className="hero-text text-4xl font-bold leading-tight">
-              Transforming Education <br />
+              Engineer (B.E.) and Manager (M.B.A.) by Qualification. <br />
               <span className="text-2xl font-medium text-gray-700">
-                With Expertise and Empathy
+                Educator (B.Ed.) by Choice.
+              </span> <br />
+              <span className="text-lg text-gray-500">
+                15+ years of teaching & leadership, enriched by global experience in the US.
               </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Versatile educator with expertise across CBSE, IB, and international curricula, passionate about making Math and Physics engaging, accessible, and impactful.
-            </p>
+          </h1>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
