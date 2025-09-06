@@ -25,7 +25,7 @@ export default function HeroSection() {
             <h1 className="hero-text text-3xl font-bold leading-snug max-w-3xl mx-auto text-center">
               Educator (B.Ed.) by Choice. <br />
               <span className="text-xl font-medium text-gray-700">
-              Engineer (B.E.) and Manager (M.B.A.) by Qualification.
+              Engineer (B.E.) and Administrator (M.B.A.) by Qualification.
               </span> <br />
               <span className="text-base text-gray-500">
                 15+ years of teaching & leadership, enriched by global experience in the US.
