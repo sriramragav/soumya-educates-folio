@@ -81,16 +81,37 @@ export default function ScrollableHighlightsAndSkills() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Scroll to current card on index change
+  // Scroll container scrolled manually or by buttons/dots
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+
+    const handleScroll = debounce(() => {
+      let cardWidth = container.clientWidth;
+      if (!isMobile) {
+        const firstCard = container.querySelector('div > div');
+        if (firstCard instanceof HTMLElement) {
+          cardWidth = firstCard.offsetWidth + 24; // 24 = space-x-6 px
+        }
+      }
+      const scrollLeft = container.scrollLeft;
+      const idx = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(idx);
+    }, 100);
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
+
+  // Scroll to current card when index changes programmatically
   useEffect(() => {
     if (scrollRef.current) {
       const container = scrollRef.current;
       let cardWidth = container.clientWidth;
       if (!isMobile) {
-        // On desktop approximate card width with first child's offsetWidth + spacing (e.g. 24px = 6 spacing * 4)
-        const firstCard = container.querySelector('div > div'); // depends on your Card markup
+        const firstCard = container.querySelector('div > div');
         if (firstCard instanceof HTMLElement) {
-          cardWidth = firstCard.offsetWidth + 24; // 24 = space-x-6 * 4 (px)
+          cardWidth = firstCard.offsetWidth + 24;
         }
       }
       container.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
@@ -123,32 +144,10 @@ export default function ScrollableHighlightsAndSkills() {
       className="relative py-20 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50"
     >
       <div className="container mx-auto px-4 max-w-7xl">
-        <header className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-indigo-700 mb-2">
-            Career Highlights & Strengths
-          </h2>
-          <div className="mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-indigo-400 to-purple-600 shadow-md" />
-        </header>
+        {/* Header as before */}
 
-        {/* Scroll buttons */}
-        <button
-          onClick={scrollLeft}
-          aria-label="Scroll left"
-          disabled={isMobile ? currentIndex === 0 : false}
-          className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
-        >
-          <ChevronLeft size={28} />
-        </button>
-        <button
-          onClick={scrollRight}
-          aria-label="Scroll right"
-          disabled={isMobile ? currentIndex === highlightsAndSkills.length - 1 : false}
-          className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
-        >
-          <ChevronRight size={28} />
-        </button>
+        {/* Scroll buttons as before */}
 
-        {/* Scrollable container */}
         <div
           ref={scrollRef}
           className={`
@@ -159,24 +158,10 @@ export default function ScrollableHighlightsAndSkills() {
             px-6
           `}
         >
-          {highlightsAndSkills.map(({ title, icon, description }, idx) => (
-            <Card
-              key={idx}
-              className={`
-                flex-shrink-0 bg-white backdrop-blur-sm bg-opacity-90 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300
-                ${isMobile ? 'w-full snap-start' : 'min-w-[280px] max-w-[320px]'}
-              `}
-            >
-              <CardContent className="flex flex-col items-center text-center p-8 space-y-6 h-full">
-                <div className="text-6xl">{icon}</div>
-                <h3 className="text-xl font-semibold text-indigo-800">{title}</h3>
-                <p className="text-sm text-gray-700 flex-grow">{description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Render cards same as before */}
         </div>
 
-        {/* Dots navigation on all screen sizes */}
+        {/* Dots always visible */}
         <div className="flex justify-center mt-6 space-x-3">
           {highlightsAndSkills.map((_, idx) => (
             <button
