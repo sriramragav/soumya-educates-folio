@@ -64,17 +64,15 @@ export default function ScrollableHighlightsAndSkills() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Media query listener to detect mobile width
   useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind is 768px
+      setIsMobile(window.innerWidth < 768);
     }
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Scroll to current card on mobile index change
   useEffect(() => {
     if (scrollRef.current && isMobile) {
       const container = scrollRef.current;
@@ -97,6 +95,10 @@ export default function ScrollableHighlightsAndSkills() {
     } else if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
+  }
+
+  function goToIndex(idx: number) {
+    setCurrentIndex(idx);
   }
 
   return (
@@ -157,6 +159,23 @@ export default function ScrollableHighlightsAndSkills() {
             </Card>
           ))}
         </div>
+
+        {/* Dots navigation on mobile */}
+        {isMobile && (
+          <div className="flex justify-center mt-6 space-x-3">
+            {highlightsAndSkills.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToIndex(idx)}
+                aria-label={`Go to card ${idx + 1}`}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
+                }`}
+                aria-current={idx === currentIndex ? 'true' : undefined}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
