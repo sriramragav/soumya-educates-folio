@@ -110,7 +110,7 @@ export default function ExperienceSection() {
             A timeline of educational excellence and transformative leadership
           </p>
         </div>
-        {/* Outer container with hidden overflow and hover button reveal */}
+        {/* Outer container hides horizontal scroll, buttons show on hover */}
         <div
           className="relative max-w-6xl mx-auto overflow-x-hidden"
           onMouseEnter={() => setHovered(true)}
@@ -129,7 +129,7 @@ export default function ExperienceSection() {
           </Button>
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-y-hidden scroll-smooth px-12 py-3"
+            className="flex gap-6 overflow-x-hidden overflow-y-hidden scroll-smooth px-12 py-3"
             style={{ scrollBehavior: 'smooth' }}
           >
             {experiences.map((exp, index) => {
