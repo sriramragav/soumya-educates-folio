@@ -30,15 +30,21 @@ const subjects = [
 
 const certifications = [
   {
-    title: 'Ph.D. in Educational Psychology',
-    institution: 'Indian Institute of Education',
-    year: '2015',
+    title: 'B.Ed in Math and English',
+    institution: 'Sri Bharathi College of Education',
+    year: '2018',
     type: 'Degree'
   },
   {
-    title: 'M.Ed. in Curriculum & Instruction',
-    institution: 'Delhi University',
-    year: '2010',
+    title: 'M.B.A in Marketing',
+    institution: 'SPMVV College, Tirupati',
+    year: '2002',
+    type: 'Degree'
+  },
+  {
+    title: 'B.E in Mechanical',
+    institution: 'SV University, Tirupati',
+    year: '2000',
     type: 'Degree'
   },
   {
