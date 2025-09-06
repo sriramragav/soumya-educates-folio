@@ -1,7 +1,7 @@
 import { GraduationCap, Building, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const experiences = [
   {
@@ -87,6 +87,7 @@ const experiences = [
 
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -109,20 +110,27 @@ export default function ExperienceSection() {
             A timeline of educational excellence and transformative leadership
           </p>
         </div>
-        {/* Outer container with horizontal scroll */}
-        <div className="relative max-w-6xl mx-auto">
+        {/* Outer container with hidden overflow and hover button reveal */}
+        <div
+          className="relative max-w-6xl mx-auto overflow-x-hidden"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
           <Button
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 transition-opacity duration-300 ${
+              hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
             aria-label="Scroll Left"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth px-12 py-4"
+            className="flex gap-6 overflow-y-hidden scroll-smooth px-12 py-4"
+            style={{ scrollBehavior: 'smooth' }}
           >
             {experiences.map((exp, index) => {
               const Icon = exp.icon;
@@ -172,7 +180,9 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10"
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 transition-opacity duration-300 ${
+              hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
             aria-label="Scroll Right"
           >
             <ChevronRight className="h-4 w-4" />
