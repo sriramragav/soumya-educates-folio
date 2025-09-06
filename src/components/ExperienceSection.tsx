@@ -12,9 +12,9 @@ const experiences = [
       'Authored Math workbooks (Grades 1–8) & created revision/test flashcards.',
       'Reviewed Physics content and provided constructive feedback to team.',
       'Planned & implemented curriculum, including bridge courses for primary grades.',
-      'Trained teachers & collaborated with LMS team for online concept revisions.'
+      'Trained teachers & collaborated with LMS team for online concept revisions.',
     ],
-    highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination']
+    highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination'],
   },
   {
     year: 'Jul 2018 - Oct 2023',
@@ -25,9 +25,9 @@ const experiences = [
       'Guided students through past papers, assessments, and exam prep.',
       'Developed concepts and mathematical modeling for IBDP IA projects (HL & SL).',
       'Designed academic assessments and training for teachers.',
-      'Provided personalized guidance and periodic evaluations.'
+      'Provided personalized guidance and periodic evaluations.',
     ],
-    highlights: ['Online Tutoring','Curriculum Design','Concept Development','Assessment & Feedback','Personalized Learning','IBDP IA Mentorship']
+    highlights: ['Online Tutoring','Curriculum Design','Concept Development','Assessment & Feedback','Personalized Learning','IBDP IA Mentorship'],
   },
   {
     year: 'Jun 2017 - Mar 2018',
@@ -40,9 +40,9 @@ const experiences = [
       'Facilitated PTMs, documented feedback, and implemented policies to enhance academic performance.',
       'Conducted parent induction programs and educated parents on teaching methodologies and assessment procedures.',
       'Counseled students on disciplinary and academic concerns.',
-      'Coordinated with head office for teacher training programs and compliance documentation.'
+      'Coordinated with head office for teacher training programs and compliance documentation.',
     ],
-    highlights: ['Teacher Management','Class Observation & Feedback','Parent Engagement','Policy Implementation','Student Counseling','Teacher Training Coordination']
+    highlights: ['Teacher Management','Class Observation & Feedback','Parent Engagement','Policy Implementation','Student Counseling','Teacher Training Coordination'],
   },
   {
     year: 'Dec 2014 - Sep 2016',
@@ -54,9 +54,9 @@ const experiences = [
       'Identified behavioral challenges and applied targeted interventions using physical movement and learning style analysis (Auditory, Visual, Kinesthetic).',
       'Implemented feedback from workshops on child psychology and teacher development to improve teaching methodology.',
       'Conducted morning meditation, pranayama sessions, and wellness activities for students (Class VI–XII).',
-      'Implemented whole language program and group assignments to enrich vocabulary and learning engagement.'
+      'Implemented whole language program and group assignments to enrich vocabulary and learning engagement.',
     ],
-    highlights: ['Early Childhood Education','Montessori Facilitation','Behavioral Assessment','Wellness & Mindfulness','Curriculum Implementation','Student Engagement']
+    highlights: ['Early Childhood Education','Montessori Facilitation','Behavioral Assessment','Wellness & Mindfulness','Curriculum Implementation','Student Engagement'],
   },
   {
     year: 'May 2010 - Aug 2013',
@@ -74,15 +74,25 @@ const experiences = [
       'Acted as single point of contact for parent concerns regarding academics, behavior, and transport.',
       'Framed and implemented school policies and procedures in alignment with Zee Learn guidelines.',
       'Managed entrance exams, evaluations, and assessments for student admissions.',
-      'Active member of the Blue Ribbon program addressing child protection and safety.'
+      'Active member of the Blue Ribbon program addressing child protection and safety.',
     ],
-    highlights: ['Leadership & Administration','Teacher Training','Admissions & Parent Engagement','Curriculum Implementation','Event & Budget Management','Student Safety & Welfare','Staff Recruitment & Mentorship']
-  }
+    highlights: ['Leadership & Administration','Teacher Training','Admissions & Parent Engagement','Curriculum Implementation','Event & Budget Management','Student Safety & Welfare','Staff Recruitment & Mentorship'],
+  },
 ];
+
+function debounce(func: (...args: any[]) => void, wait: number) {
+  let timeout: ReturnType<typeof setTimeout>;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+}
 
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Calculate card width on mount and window resize
   useEffect(() => {
@@ -93,19 +103,55 @@ export default function ExperienceSection() {
       }
     };
     updateCardWidth();
-    window.addEventListener('resize', updateCardWidth);
-    return () => window.removeEventListener('resize', updateCardWidth);
+
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768);
+      updateCardWidth();
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Debounced scroll listener to update currentIndex based on scroll position
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+
+    const onScroll = debounce(() => {
+      const scrollLeft = container.scrollLeft;
+
+      // Compute index approximately by dividing scrollLeft by cardWidth (including gap)
+      if (cardWidth > 0) {
+        const idx = Math.round(scrollLeft / cardWidth);
+        setCurrentIndex(Math.min(Math.max(idx, 0), experiences.length - 1));
+      }
+    }, 100);
+
+    container.addEventListener('scroll', onScroll);
+    return () => container.removeEventListener('scroll', onScroll);
+  }, [cardWidth]);
+
+  // Scroll to card index on dot click
+  function goToIndex(idx: number) {
+    if (scrollRef.current && cardWidth > 0) {
+      scrollRef.current.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+      setCurrentIndex(idx);
+    }
+  }
+
+  // Scroll handlers for buttons
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      const newIndex = Math.max(currentIndex - 1, 0);
+      goToIndex(newIndex);
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      const newIndex = Math.min(currentIndex + 1, experiences.length - 1);
+      goToIndex(newIndex);
     }
   };
 
@@ -123,8 +169,9 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 opacity-80 hover:opacity-100"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             aria-label="Scroll Left"
+            disabled={currentIndex === 0}
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -173,12 +220,31 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 opacity-80 hover:opacity-100"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded bg-indigo-700 text-white shadow-lg opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             aria-label="Scroll Right"
+            disabled={currentIndex === experiences.length - 1}
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
+
+        {/* Dots navigation: only show on mobile */}
+        {isMobile && (
+          <div className="flex justify-center mt-6 space-x-3">
+            {experiences.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToIndex(idx)}
+                aria-label={`Go to experience ${idx + 1}`}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  idx === currentIndex ? 'bg-indigo-700' : 'bg-indigo-300'
+                }`}
+                aria-current={idx === currentIndex ? 'true' : undefined}
+              />
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );
