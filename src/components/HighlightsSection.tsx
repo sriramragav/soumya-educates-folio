@@ -59,7 +59,7 @@ const highlightsAndSkills = [
 
 export default function HighlightsAndStrengthsCards() {
   return (
-    <section id="highlights-skills" className="py-20 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
+    <section id="highlights" className="py-20 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
       <div className="section-container max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">Career Highlights & Strengths</h2>
