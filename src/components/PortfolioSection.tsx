@@ -1,14 +1,15 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { BookOpen, Award, Users, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
+import { Globe } from 'lucide-react';
 
 const subjects = [
   {
-    title: 'Mathematics Education',
-    description: 'Advanced pedagogical approaches to teaching complex mathematical concepts',
-    icon: BookOpen,
-    level: 'K-12 & Higher Education',
-  },
+  title: 'Multilingual Communication',
+  description: 'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
+  icon: Globe,
+  level: 'All Levels'
+  }
   {
     title: 'Curriculum Development',
     description: 'Designing comprehensive educational programs aligned with learning outcomes',
