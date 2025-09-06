@@ -23,7 +23,7 @@ export default function HeroSection() {
           
           <div className="space-y-4">
             <h1 className="hero-text text-3xl font-bold leading-snug max-w-3xl mx-auto text-center">
-              Educator (B.Ed.) by Choice.
+              Educator (B.Ed.) by Choice. <br />
               <span className="text-xl font-medium text-gray-700">
               Engineer (B.E.) and Manager (M.B.A.) by Qualification. <br />  
               </span> <br />
