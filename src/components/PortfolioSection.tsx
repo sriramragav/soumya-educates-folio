@@ -7,26 +7,26 @@ const subjects = [
     title: 'Mathematics Education',
     description: 'Advanced pedagogical approaches to teaching complex mathematical concepts',
     icon: BookOpen,
-    level: 'K-12 & Higher Education'
+    level: 'K-12 & Higher Education',
   },
   {
     title: 'Curriculum Development',
     description: 'Designing comprehensive educational programs aligned with learning outcomes',
     icon: Lightbulb,
-    level: 'Institutional Level'
+    level: 'Institutional Level',
   },
   {
     title: 'Educational Technology',
     description: 'Integration of digital tools and platforms in modern learning environments',
     icon: Users,
-    level: 'All Levels'
+    level: 'All Levels',
   },
   {
     title: 'Teacher Training',
     description: 'Professional development programs for educational excellence',
     icon: Award,
-    level: 'Professional Development'
-  }
+    level: 'Professional Development',
+  },
 ];
 
 const certifications = [
@@ -34,32 +34,32 @@ const certifications = [
     title: 'B.Ed in Math and English',
     institution: 'Sri Bharathi College of Education',
     year: '2018',
-    type: 'Degree'
+    type: 'Degree',
   },
   {
     title: 'M.B.A in Marketing',
     institution: 'SPMVV College, Tirupati',
     year: '2002',
-    type: 'Degree'
+    type: 'Degree',
   },
   {
     title: 'B.E in Mechanical',
     institution: 'SV University, Tirupati',
     year: '2000',
-    type: 'Degree'
+    type: 'Degree',
   },
   {
     title: 'Certified Educational Technology Leader',
     institution: 'EdTech Council of India',
     year: '2019',
-    type: 'Certification'
+    type: 'Certification',
   },
   {
     title: 'International Teaching Excellence Award',
     institution: 'Global Education Forum',
     year: '2021',
-    type: 'Award'
-  }
+    type: 'Award',
+  },
 ];
 
 function debounce(func: (...args: any[]) => void, wait: number) {
@@ -143,7 +143,6 @@ export default function PortfolioSection() {
     useEffect(() => {
       if (!ref.current) return;
       const container = ref.current;
-
       const updateScroll = debounce(() => {
         const { scrollLeft, scrollWidth, clientWidth } = container;
         setCanScrollLeft(scrollLeft > 5);
@@ -153,10 +152,8 @@ export default function PortfolioSection() {
           setCurrentIndex(idx);
         }
       }, 100);
-
       container.addEventListener('scroll', updateScroll);
       updateScroll(); // initial update
-
       return () => {
         container.removeEventListener('scroll', updateScroll);
       };
@@ -221,6 +218,7 @@ export default function PortfolioSection() {
             >
               <ChevronLeft size={20} />
             </button>
+
             {/* Cards */}
             <div
               ref={certsRef}
@@ -228,8 +226,8 @@ export default function PortfolioSection() {
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {certifications.map((cert, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow"
                   style={{ minWidth: '280px', maxWidth: '320px' }}
                 >
@@ -246,13 +244,15 @@ export default function PortfolioSection() {
                       </div>
                     </div>
                     <div className="mt-4">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs ${
-                        cert.type === 'Degree' 
-                          ? 'bg-accent text-accent-foreground'
-                          : cert.type === 'Award'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-secondary text-secondary-foreground'
-                      }`}>
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs ${
+                          cert.type === 'Degree'
+                            ? 'bg-accent text-accent-foreground'
+                            : cert.type === 'Award'
+                            ? 'bg-yellow-100 text-yellow-800'
+                            : 'bg-secondary text-secondary-foreground'
+                        }`}
+                      >
                         {cert.type}
                       </span>
                     </div>
@@ -260,6 +260,7 @@ export default function PortfolioSection() {
                 </Card>
               ))}
             </div>
+
             {/* Right button */}
             <button
               aria-label="Scroll Right Certifications"
@@ -305,6 +306,7 @@ export default function PortfolioSection() {
             >
               <ChevronLeft size={20} />
             </button>
+
             {/* Cards */}
             <div
               ref={subjectsRef}
@@ -314,7 +316,11 @@ export default function PortfolioSection() {
               {subjects.map((subject, index) => {
                 const Icon = subject.icon;
                 return (
-                  <Card key={index} className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow" style={{ minWidth: '280px', maxWidth: '320px' }}>
+                  <Card
+                    key={index}
+                    className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow"
+                    style={{ minWidth: '280px', maxWidth: '320px' }}
+                  >
                     <CardContent className="p-6 text-center">
                       <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Icon className="h-8 w-8" />
@@ -329,6 +335,7 @@ export default function PortfolioSection() {
                 );
               })}
             </div>
+
             {/* Right button */}
             <button
               aria-label="Scroll Right Specializations"
