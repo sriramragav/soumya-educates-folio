@@ -66,31 +66,6 @@ export default function PortfolioSection() {
           </p>
         </div>
 
-        {/* Subjects */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">Core Specializations</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {subjects.map((subject, index) => {
-              const Icon = subject.icon;
-              return (
-                <Card key={index} className="hover:shadow-elegant transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="h-8 w-8" />
-                    </div>
-                    <h4 className="text-lg font-semibold mb-2">{subject.title}</h4>
-                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
-                      {subject.description}
-                    </p>
-                    <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs">
-                      {subject.level}
-                    </span>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Degrees & Certifications */}
         <div>
@@ -126,6 +101,33 @@ export default function PortfolioSection() {
             ))}
           </div>
         </div>
+
+        {/* Subjects */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold mb-8 text-center">Core Specializations</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {subjects.map((subject, index) => {
+              const Icon = subject.icon;
+              return (
+                <Card key={index} className="hover:shadow-elegant transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <h4 className="text-lg font-semibold mb-2">{subject.title}</h4>
+                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+                      {subject.description}
+                    </p>
+                    <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs">
+                      {subject.level}
+                    </span>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
     </section>
   );
