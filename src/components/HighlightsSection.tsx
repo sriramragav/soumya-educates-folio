@@ -59,7 +59,13 @@ const highlightsAndSkills = [
   },
 ];
 
-// ... other imports and code unchanged ...
+function debounce(func: () => void, wait: number) {
+  let timeout: ReturnType<typeof setTimeout>;
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, wait);
+  };
+}
 
 export default function ScrollableHighlightsAndSkills() {
   const scrollRef = useRef<HTMLDivElement>(null);
