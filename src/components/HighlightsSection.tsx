@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -61,27 +61,41 @@ const highlightsAndSkills = [
 
 export default function ScrollableHighlightsAndSkills() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  function updateScrollButtons() {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1); // minor adjustment for rounding
-  }
+  // Media query listener to detect mobile width
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind is 768px
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Scroll to current card on mobile index change
+  useEffect(() => {
+    if (scrollRef.current && isMobile) {
+      const container = scrollRef.current;
+      const cardWidth = container.clientWidth;
+      container.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
+    }
+  }, [currentIndex, isMobile]);
 
   function scrollLeft() {
-    if (scrollRef.current) {
+    if (isMobile) {
+      setCurrentIndex((idx) => Math.max(0, idx - 1));
+    } else if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-      setTimeout(updateScrollButtons, 300);
     }
   }
 
   function scrollRight() {
-    if (scrollRef.current) {
+    if (isMobile) {
+      setCurrentIndex((idx) => Math.min(highlightsAndSkills.length - 1, idx + 1));
+    } else if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-      setTimeout(updateScrollButtons, 300);
     }
   }
 
@@ -99,35 +113,41 @@ export default function ScrollableHighlightsAndSkills() {
         </header>
 
         {/* Scroll buttons */}
-        {canScrollLeft && (
-          <button
-            onClick={scrollLeft}
-            aria-label="Scroll left"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800"
-          >
-            <ChevronLeft size={28} />
-          </button>
-        )}
-        {canScrollRight && (
-          <button
-            onClick={scrollRight}
-            aria-label="Scroll right"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800"
-          >
-            <ChevronRight size={28} />
-          </button>
-        )}
+        <button
+          onClick={scrollLeft}
+          aria-label="Scroll left"
+          disabled={isMobile ? currentIndex === 0 : false}
+          className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
+        >
+          <ChevronLeft size={28} />
+        </button>
+        <button
+          onClick={scrollRight}
+          aria-label="Scroll right"
+          disabled={isMobile ? currentIndex === highlightsAndSkills.length - 1 : false}
+          className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 bg-indigo-700 bg-opacity-80 text-white rounded-full shadow-lg hover:bg-indigo-800 disabled:opacity-40 disabled:cursor-not-allowed transition`}
+        >
+          <ChevronRight size={28} />
+        </button>
 
         {/* Scrollable container */}
         <div
           ref={scrollRef}
-          onScroll={updateScrollButtons}
-          className="flex overflow-x-auto space-x-6 scrollbar-hide px-6"
+          className={`
+            flex
+            ${isMobile ? 'overflow-hidden' : 'overflow-x-auto'}
+            space-x-6 scrollbar-hide
+            ${isMobile ? 'snap-x snap-mandatory' : ''}
+            px-6
+          `}
         >
           {highlightsAndSkills.map(({ title, icon, description }, idx) => (
             <Card
               key={idx}
-              className="min-w-[280px] max-w-[320px] flex-shrink-0 bg-white backdrop-blur-sm bg-opacity-90 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300"
+              className={`
+                flex-shrink-0 bg-white backdrop-blur-sm bg-opacity-90 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300
+                ${isMobile ? 'w-full snap-start' : 'min-w-[280px] max-w-[320px]'}
+              `}
             >
               <CardContent className="flex flex-col items-center text-center p-8 space-y-6 h-full">
                 <div className="text-6xl">{icon}</div>
