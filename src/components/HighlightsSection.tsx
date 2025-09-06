@@ -49,6 +49,15 @@ export default function HighlightsSection() {
               <p className="text-sm text-muted-foreground">Streamlined critical school operations, led CBSE affiliation record-keeping, and launched a monthly newsletter to showcase achievements and foster community spirit.</p>
             </CardContent>
           </Card>
+
+          <Card className="text-center hover:shadow-elegant transition-shadow">
+            <CardContent className="p-6 space-y-3">
+              <div className="text-3xl font-bold text-primary">⚙️</div>
+              <div className="font-semibold text-foreground">Leadership in Wellness</div>
+              <p className="text-sm text-muted-foreground">Certified Level 1 Pranic Healer and conducted pranayama (yogic breathing) sessions for students from classes VI to XII, promoting holistic well-being alongside academic growth.</p>
+            </CardContent>
+          </Card>
+
         </div>
       </div>
     </section>
