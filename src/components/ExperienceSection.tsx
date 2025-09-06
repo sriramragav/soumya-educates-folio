@@ -140,9 +140,9 @@ export default function ExperienceSection() {
                         <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
                         <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                         <p className="text-accent font-medium mb-3">{exp.organization}</p>
-                        {/* Bullets with vertical scroll */}
-                        <div className="flex-1 overflow-y-auto pr-2 mb-4 max-h-[240px]">
-                          <div className="space-y-2">
+                        {/* Combined bullets + highlights scrollable */}
+                        <div className="flex-1 overflow-y-auto pr-2 mb-4 max-h-[280px] flex flex-col">
+                          <div className="space-y-2 mb-4">
                             {exp.bullets.map((bullet, i) => (
                               <div key={i} className="flex items-start gap-2">
                                 <div className="w-2 h-2 bg-primary rounded-full mt-1 flex-shrink-0"></div>
@@ -150,17 +150,16 @@ export default function ExperienceSection() {
                               </div>
                             ))}
                           </div>
-                        </div>
-                        {/* Highlights */}
-                        <div className="flex flex-wrap gap-2 mt-auto">
-                          {exp.highlights.map((highlight, i) => (
-                            <span
-                              key={i}
-                              className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
-                            >
-                              {highlight}
-                            </span>
-                          ))}
+                          <div className="flex flex-wrap gap-2 mt-auto">
+                            {exp.highlights.map((highlight, i) => (
+                              <span
+                                key={i}
+                                className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
+                              >
+                                {highlight}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
