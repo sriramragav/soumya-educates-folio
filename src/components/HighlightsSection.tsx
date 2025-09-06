@@ -2,55 +2,55 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const highlightsAndSkills = [
   {
-    title: 'Teachers Led',
+    title: 'Educational Leadership & Mentorship',
     icon: '👩‍🏫',
     description:
       'Rose from teacher to Vice Principal in 2 years, successfully managing and mentoring a team of more than 30 educators.',
   },
   {
-    title: 'Admissions Conversion',
+    title: 'Admissions Success Rate',
     icon: '🎯',
     description:
       'Personally converted around 600 of 860 enquiries into school admissions—a testament to persuasive communication and trust-building with families.',
   },
   {
-    title: 'Students Impacted',
+    title: 'Student Development & Guidance',
     icon: '👩‍🎓',
     description:
       'Taught, mentored, and guided students spanning kindergarten to grade 12 across international (IB, IGCSE) and Indian curricula.',
   },
   {
-    title: 'Academic Content Creator',
+    title: 'Academic Content Development',
     icon: '📚',
     description:
       'Designed math workbooks for grades 1–8 and played a key role in curriculum planning, development, and teacher training at a leading institution.',
   },
   {
-    title: 'Process Innovator',
+    title: 'Operational Excellence & Innovation',
     icon: '⚙️',
     description:
       'Streamlined critical school operations, led CBSE affiliation record-keeping, and launched a monthly newsletter to showcase achievements and foster community spirit.',
   },
   {
-    title: 'Leadership in Wellness',
+    title: 'Wellness & Holistic Leadership',
     icon: '🧘‍♀️',
     description:
       'Certified Level 1 Pranic Healer and conducted pranayama sessions for students, promoting holistic well-being alongside academic growth.',
   },
   {
-    title: 'Learner-Centric Educator',
+    title: 'Learner-Centered Teaching',
     icon: '🌱',
     description:
       'Passionate about inquiry-based learning focused on critical thinking, personalized support, and active student engagement.',
   },
   {
-    title: 'Curriculum Designer',
+    title: 'Curriculum & Assessment Design',
     icon: '🗂️',
     description:
       'Experienced in developing curriculum maps, assessment frameworks, and study materials across multiple international curricula.',
   },
   {
-    title: 'Effective Communicator',
+    title: 'Effective Communication & Relationship Building',
     icon: '🗣️',
     description:
       'Excellent negotiation, presentation, and relationship-building skills demonstrated through successful student and parent engagements.',
