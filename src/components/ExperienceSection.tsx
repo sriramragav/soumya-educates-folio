@@ -1,7 +1,7 @@
-import { GraduationCap, Building, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Building, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const experiences = [
   {
@@ -14,7 +14,6 @@ const experiences = [
       'Planned & implemented curriculum, including bridge courses for primary grades.',
       'Trained teachers & collaborated with LMS team for online concept revisions.'
     ],
-    icon: Building,
     highlights: ['Curriculum Design','Content Creation','Teacher Training','Quality Review','LMS Coordination']
   },
   {
@@ -22,13 +21,12 @@ const experiences = [
     title: 'Freelance & Online Math & Physics Instructor',
     organization: 'Self-employed / Catalyze Center for Learning / Vidyalai',
     bullets: [
-      'Tutored Math & Physics online for IB, IGCSE, ICSE, CBSE, Edexcel, Australian, New Zealand, and Singapore curricula (Grades 8–12).',
-      'Guided students through past papers, assessments, and board exam preparation to strengthen concept application.',
-      'Developed concepts, experimental procedures, and mathematical modeling for IBDP IA projects (HL & SL).',
-      'Designed academic assessments, trained teachers, and created individualized study plans for students.',
-      'Provided solutions, one-on-one guidance, and periodic tests to address grey areas and improve performance.'
+      'Tutored Math & Physics online for multiple curricula (Grades 8–12).',
+      'Guided students through past papers, assessments, and exam prep.',
+      'Developed concepts and mathematical modeling for IBDP IA projects (HL & SL).',
+      'Designed academic assessments and training for teachers.',
+      'Provided personalized guidance and periodic evaluations.'
     ],
-    icon: Users,
     highlights: ['Online Tutoring','Curriculum Design','Concept Development','Assessment & Feedback','Personalized Learning','IBDP IA Mentorship']
   },
   {
@@ -44,7 +42,6 @@ const experiences = [
       'Counseled students on disciplinary and academic concerns.',
       'Coordinated with head office for teacher training programs and compliance documentation.'
     ],
-    icon: Building,
     highlights: ['Teacher Management','Class Observation & Feedback','Parent Engagement','Policy Implementation','Student Counseling','Teacher Training Coordination']
   },
   {
@@ -59,7 +56,6 @@ const experiences = [
       'Conducted morning meditation, pranayama sessions, and wellness activities for students (Class VI–XII).',
       'Implemented whole language program and group assignments to enrich vocabulary and learning engagement.'
     ],
-    icon: Users,
     highlights: ['Early Childhood Education','Montessori Facilitation','Behavioral Assessment','Wellness & Mindfulness','Curriculum Implementation','Student Engagement']
   },
   {
@@ -80,24 +76,36 @@ const experiences = [
       'Managed entrance exams, evaluations, and assessments for student admissions.',
       'Active member of the Blue Ribbon program addressing child protection and safety.'
     ],
-    icon: Building,
     highlights: ['Leadership & Administration','Teacher Training','Admissions & Parent Engagement','Curriculum Implementation','Event & Budget Management','Student Safety & Welfare','Staff Recruitment & Mentorship']
   }
 ];
 
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
+  const [cardWidth, setCardWidth] = useState(0);
+
+  // Calculate card width on mount and window resize
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (scrollRef.current) {
+        const containerWidth = scrollRef.current.offsetWidth;
+        setCardWidth(containerWidth - 40); // Show partial next card (40px)
+      }
+    };
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, []);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
     }
   };
 
@@ -110,79 +118,62 @@ export default function ExperienceSection() {
             A timeline of educational excellence and transformative leadership
           </p>
         </div>
-        {/* Outer container hides horizontal scroll, buttons show on hover */}
-        <div
-          className="relative max-w-6xl mx-auto overflow-x-hidden"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
+        <div className="relative max-w-6xl mx-auto overflow-x-hidden">
           <Button
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 transition-opacity duration-300 ${
-              hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 opacity-80 hover:opacity-100"
             aria-label="Scroll Left"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <div
+          <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-x-hidden overflow-y-hidden scroll-smooth px-12 py-3"
-            style={{ scrollBehavior: 'smooth' }}
+            className="flex gap-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory scroll-smooth px-4"
+            style={{ scrollSnapType: 'x mandatory' }}
           >
-            {experiences.map((exp, index) => {
-              const Icon = exp.icon;
-              return (
-                <Card
-                  key={index}
-                  className="flex-shrink-0 w-[300px] md:w-[400px] max-h-[440px] flex flex-col bg-card shadow-elegant"
-                >
-                  <CardContent className="flex flex-col h-full p-5">
-                    <div className="flex items-start gap-4 flex-1">
-                      <div className="bg-primary text-primary-foreground p-3 rounded-lg flex-shrink-0">
-                        <Icon className="h-6 w-6" />
+            {experiences.map((exp, index) => (
+              <Card 
+                key={index}
+                className="flex-shrink-0 snap-center bg-card shadow-elegant"
+                style={{ width: cardWidth || '90vw', maxWidth: '400px', maxHeight: '440px', scrollSnapAlign: 'center' }}
+              >
+                <CardContent className="flex flex-col h-full p-5">
+                  <div className="flex flex-col h-full">
+                    <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
+                    <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
+                    <p className="text-accent font-medium mb-3">{exp.organization}</p>
+                    <div className="flex-1 overflow-y-auto pr-2 mb-2 max-h-[240px] flex flex-col">
+                      <div className="space-y-2 mb-4">
+                        {exp.bullets.map((bullet, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-1 flex-shrink-0"></div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">{bullet}</p>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex-1 flex flex-col h-full">
-                        <div className="text-sm font-medium text-primary mb-1">{exp.year}</div>
-                        <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                        <p className="text-accent font-medium mb-3">{exp.organization}</p>
-                        {/* Combined bullets + highlights scrollable */}
-                        <div className="flex-1 overflow-y-auto pr-2 mb-2 max-h-[240px] flex flex-col">
-                          <div className="space-y-2 mb-4">
-                            {exp.bullets.map((bullet, i) => (
-                              <div key={i} className="flex items-start gap-2">
-                                <div className="w-2 h-2 bg-primary rounded-full mt-1 flex-shrink-0"></div>
-                                <p className="text-muted-foreground text-sm leading-relaxed">{bullet}</p>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="flex flex-wrap gap-2 mt-auto">
-                            {exp.highlights.map((highlight, i) => (
-                              <span
-                                key={i}
-                                className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
-                              >
-                                {highlight}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {exp.highlights.map((highlight, i) => (
+                          <span
+                            key={i}
+                            className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
+                          >
+                            {highlight}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
           <Button
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 transition-opacity duration-300 ${
-              hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 opacity-80 hover:opacity-100"
             aria-label="Scroll Right"
           >
             <ChevronRight className="h-4 w-4" />
