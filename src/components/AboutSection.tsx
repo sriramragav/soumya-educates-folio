@@ -8,6 +8,7 @@ export default function AboutSection() {
          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Soumya</h2>
          <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
       </div>
+      <br />
       <div className="section-container max-w-4xl mx-auto">
         <div className="flex flex-col gap-12 items-center">
           {/* Video Section */}
