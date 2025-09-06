@@ -181,9 +181,6 @@ export default function ExperienceSection() {
       <div className="section-container">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Journey</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A timeline of educational excellence and transformative leadership
-          </p>
         </div>
         <div className="relative max-w-6xl mx-auto overflow-x-hidden">
           <Button
