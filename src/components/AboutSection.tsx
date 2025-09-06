@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 bg-soft-gradient">
-      <div>
+      <div className="space-y-6 text-center">
          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Soumya</h2>
          <div className="w-20 h-1 bg-primary rounded-full mx-auto"></div>
       </div>
@@ -24,8 +24,6 @@ export default function AboutSection() {
 
           {/* About Content */}
           <div className="space-y-6 text-center">
-            
-            
             <div className="space-y-6 text-lg leading-relaxed max-w-3xl mx-auto text-muted-foreground">
               <p>
                 My journey into education has been shaped by an unusual academic path —
