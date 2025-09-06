@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { Download, FileText } from 'lucide-react';
 import soumyaHeadshot from '@/assets/SoumyaSpeaking.jpeg';
+import ResumeModal from "./ResumeModal";
 
 export default function HeroSection() {
+  const [open, setOpen] = useState(false);
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20">
       <div className="section-container">
@@ -43,12 +45,12 @@ export default function HeroSection() {
               </a>
             </Button>
 
-            <Button variant="outline" size="lg" className="gap-2" asChild>
-              <a href="/resume" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="gap-2" onClick={() => setOpen(true)}>
               <FileText className="h-5 w-5" />
-              View Resume
-              </a>
+                View Resume
             </Button>
+
+            <ResumeModal open={open} onOpenChange={setOpen} />
             
           </div>
         </div>
