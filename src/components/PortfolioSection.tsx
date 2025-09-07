@@ -13,7 +13,7 @@ const subjects = [
   },
   {
   title: 'J Krishnamurti Educational Approach',
-  description: 'Applied Krishnamurti’s philosophy to foster inquiry, reflection, and holistic growth in learners. Implemented reflective dialogue and open-ended classroom explorations, encouraging students to question, observe, and relate learning to life experiences. Designed activities promoting independent thinking and self-awareness. Noticed improved student engagement, collaborative atmosphere, and increased curiosity in diverse classrooms.',
+  description: 'Experienced in applying J Krishnamurti’s philosophy, fostering inquiry, self-awareness, and holistic growth in learners through reflective teaching and open dialogue.',
   icon: Lightbulb,
   level: 'Holistic & Reflective Teaching'
   },
