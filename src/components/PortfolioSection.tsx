@@ -1,33 +1,54 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { BookOpen, Award, Users, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  BookOpen,
+  Award,
+  Users,
+  Lightbulb,
+  ChevronLeft,
+  ChevronRight,
+  Globe,
+  MonitorCheck,
+} from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
-import { Globe } from 'lucide-react';
-import { MonitorCheck } from 'lucide-react';
 
 const subjects = [
   {
-  title: 'Multilingual Communication',
-  description: 'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
-  icon: Globe,
-  level: 'All Levels'
+    title: 'Multilingual Communication',
+    description:
+      'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
+    icon: Globe,
+    level: 'All Levels',
   },
   {
     title: 'Curriculum Development',
-    description: 'Designing comprehensive educational programs aligned with learning outcomes',
+    description:
+      'Designing comprehensive educational programs aligned with learning outcomes',
     icon: Lightbulb,
     level: 'Institutional Level',
   },
   {
-  title: 'Digital Platforms & LMS',
-  description: 'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
-  icon: MonitorCheck,
-  level: 'All Levels'
+    title: 'Digital Platforms & LMS',
+    description:
+      'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
+    icon: MonitorCheck,
+    level: 'All Levels',
   },
   {
     title: 'Teacher Training',
     description: 'Professional development programs for educational excellence',
     icon: Award,
     level: 'Professional Development',
+    moreInfo:
+      'Conducted and designed professional development workshops focusing on pedagogy, assessment, and technology integration. Mentored teachers to improve instructional practices and classroom management.',
+  },
+  {
+    title: 'J Krishnamurti Educational Approach',
+    description:
+      'Applied Krishnamurti’s philosophy to foster inquiry, reflection, and holistic growth in learners.',
+    moreInfo:
+      'Implemented reflective dialogue and open-ended classroom explorations, encouraging students to question, observe, and relate learning to life experiences. Designed activities promoting independent thinking and self-awareness. Observed increased student engagement, collaborative atmosphere, and enhanced curiosity.',
+    icon: Lightbulb,
+    level: 'Holistic & Reflective Teaching',
   },
 ];
 
@@ -70,6 +91,51 @@ function debounce(func: (...args: any[]) => void, wait: number) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
   };
+}
+
+function SkillCard({ title, description, moreInfo, icon: Icon, level }: any) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Card className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow min-w-[280px] max-w-[320px]">
+        <CardContent className="p-6 text-center">
+          <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Icon className="h-8 w-8" />
+          </div>
+          <h4 className="text-lg font-semibold mb-2">{title}</h4>
+          <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+            {description}
+            {moreInfo && (
+              <button
+                className="ml-2 text-indigo-600 underline text-xs"
+                onClick={() => setOpen(true)}
+              >
+                Read more...
+              </button>
+            )}
+          </p>
+          <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs">
+            {level}
+          </span>
+        </CardContent>
+      </Card>
+      {open && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg p-6 max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-lg">
+            <h4 className="text-lg font-bold mb-4">{title}</h4>
+            <p className="mb-6 text-gray-800 whitespace-pre-line">{moreInfo}</p>
+            <button
+              className="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-800 transition"
+              onClick={() => setOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default function PortfolioSection() {
@@ -163,11 +229,27 @@ export default function PortfolioSection() {
   }
 
   // Setup scroll listeners for both sections
-  setupScrollListeners(certsRef, certCardFullWidth, setCertCanScrollLeft, setCertCanScrollRight, setCertCurrentIndex);
-  setupScrollListeners(subjectsRef, subjCardFullWidth, setSubjCanScrollLeft, setSubjCanScrollRight, setSubjCurrentIndex);
+  setupScrollListeners(
+    certsRef,
+    certCardFullWidth,
+    setCertCanScrollLeft,
+    setCertCanScrollRight,
+    setCertCurrentIndex
+  );
+  setupScrollListeners(
+    subjectsRef,
+    subjCardFullWidth,
+    setSubjCanScrollLeft,
+    setSubjCanScrollRight,
+    setSubjCurrentIndex
+  );
 
   // Scroll to a specific index in a section
-  function scrollToIndex(ref: React.RefObject<HTMLDivElement>, cardFullWidth: number, idx: number) {
+  function scrollToIndex(
+    ref: React.RefObject<HTMLDivElement>,
+    cardFullWidth: number,
+    idx: number
+  ) {
     if (ref.current) {
       ref.current.scrollTo({ left: cardFullWidth * idx, behavior: 'smooth' });
     }
@@ -213,7 +295,7 @@ export default function PortfolioSection() {
               aria-label="Scroll Left Certifications"
               onClick={certScrollLeft}
               disabled={!certCanScrollLeft}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={20} />
             </button>
@@ -265,7 +347,7 @@ export default function PortfolioSection() {
               aria-label="Scroll Right Certifications"
               onClick={certScrollRight}
               disabled={!certCanScrollRight}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <ChevronRight size={20} />
             </button>
@@ -292,7 +374,7 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Core Specializations */}
+        {/* Skills */}
         <div>
           <h3 className="text-2xl font-bold mb-8 text-center">Skills</h3>
           <div className="relative max-w-7xl mx-auto">
@@ -301,7 +383,7 @@ export default function PortfolioSection() {
               aria-label="Scroll Left Specializations"
               onClick={subjScrollLeft}
               disabled={!subjCanScrollLeft}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={20} />
             </button>
@@ -312,25 +394,16 @@ export default function PortfolioSection() {
               className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-12 scrollbar-hide"
               style={{ scrollSnapType: 'x mandatory' }}
             >
-              {subjects.map((subject, index) => {
-                const Icon = subject.icon;
+              {subjects.map(({ title, description, moreInfo, icon, level }, index) => {
                 return (
-                  <Card
+                  <SkillCard
                     key={index}
-                    className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow"
-                    style={{ minWidth: '280px', maxWidth: '320px' }}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Icon className="h-8 w-8" />
-                      </div>
-                      <h4 className="text-lg font-semibold mb-2">{subject.title}</h4>
-                      <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{subject.description}</p>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs">
-                        {subject.level}
-                      </span>
-                    </CardContent>
-                  </Card>
+                    title={title}
+                    description={description}
+                    moreInfo={moreInfo}
+                    icon={icon}
+                    level={level}
+                  />
                 );
               })}
             </div>
@@ -340,7 +413,7 @@ export default function PortfolioSection() {
               aria-label="Scroll Right Specializations"
               onClick={subjScrollRight}
               disabled={!subjCanScrollRight}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed`}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded bg-indigo-700 text-white shadow-lg p-3 opacity-80 hover:opacity-100 disabled:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <ChevronRight size={20} />
             </button>
@@ -368,5 +441,51 @@ export default function PortfolioSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+// SkillCard component defined outside the main export for clarity and reuse
+function SkillCard({ title, description, moreInfo, icon: Icon, level }: any) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Card className="flex-shrink-0 snap-center hover:shadow-elegant transition-shadow min-w-[280px] max-w-[320px]">
+        <CardContent className="p-6 text-center">
+          <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Icon className="h-8 w-8" />
+          </div>
+          <h4 className="text-lg font-semibold mb-2">{title}</h4>
+          <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+            {description}
+            {moreInfo && (
+              <button
+                className="ml-2 text-indigo-600 underline text-xs"
+                onClick={() => setOpen(true)}
+              >
+                Read more...
+              </button>
+            )}
+          </p>
+          <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs">
+            {level}
+          </span>
+        </CardContent>
+      </Card>
+      {open && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg p-6 max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-lg">
+            <h4 className="text-lg font-bold mb-4">{title}</h4>
+            <p className="mb-6 text-gray-800 whitespace-pre-line">{moreInfo}</p>
+            <button
+              className="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-800 transition"
+              onClick={() => setOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
