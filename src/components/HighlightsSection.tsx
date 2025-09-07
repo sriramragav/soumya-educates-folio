@@ -4,58 +4,46 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const highlightsAndSkills = [
   {
-    title: 'Learner-Centered Teaching',
-    icon: '🌱',
-    description:
-      'Committed to inquiry-based, differentiated instruction that nurtures critical thinking and personalized learning.',
-  },
-  {
-    title: 'Curriculum & Assessment Design',
-    icon: '🗂️',
-    description:
-      'Experienced in creating diverse assessments aligned with international standards for Math and Physics.',
-  },
-  {
-    title: 'Educational Leadership & Mentorship',
+    title: 'Transformational Leadership',
     icon: '👩‍🏫',
     description:
-      'Rose from teacher to Vice Principal in 2 years, successfully managing and mentoring a team of over 30 educators.',
+      'Rapidly advanced to Vice Principal, leading and mentoring 30+ educators to foster a collaborative and innovative school culture.',
   },
   {
-    title: 'Student Development & Guidance',
+    title: 'Innovative Curriculum & Assessment',
+    icon: '🗂️',
+    description:
+      'Designed inquiry-based Math and Physics curricula aligned with international standards, supporting holistic student evaluation.',
+  },
+  {
+    title: 'Holistic Student Mentorship',
     icon: '🎓',
     description:
-      'Mentored students across kindergarten to grade 12 in IB, IGCSE, and other curricula, fostering academic excellence.',
+      'Guided students across IB, IGCSE, and other curricula, promoting academic achievement and socio-emotional growth.',
   },
   {
-    title: 'Effective Communication & Relationship Building',
-    icon: '🗣️',
+    title: 'Multicultural Communication & Engagement',
+    icon: '🗣️🌐',
     description:
-      'Strong communicator with a proven track record in engaging students, parents, and academic teams.',
+      'Fluent in five languages, enhancing inclusivity and building bridges with diverse learners and families.',
   },
   {
-    title: 'Academic Content Development',
-    icon: '📚',
-    description:
-      'Designed math workbooks and revision materials for grades 1-8, contributing to curriculum planning and execution.',
-  },
-  {
-    title: 'Admissions Success Rate',
-    icon: '🎯',
-    description:
-      'Converted 70% of enquiries into admissions, building strong trust with parents and families.',
-  },
-  {
-    title: 'Operational Excellence & Innovation',
-    icon: '⚙️',
-    description:
-      'Streamlined school processes and led initiatives like newsletters that enhanced community engagement.',
-  },
-  {
-    title: 'Wellness & Holistic Leadership',
+    title: 'Wellness & Mindfulness Leadership',
     icon: '🧘‍♀️',
     description:
-      'Certified Level 1 Pranic Healer; conducted pranayama and mindfulness sessions promoting student wellness.',
+      'Integrated pranayama and pranic healing practices promoting emotional resilience and balance consistent with IB values.',
+  },
+  {
+    title: 'Admissions & Community Relations',
+    icon: '🎯',
+    description:
+      'Achieved a 70% enquiry-to-admission conversion rate by building trustful relationships with families and reinforcing institutional reputation.',
+  },
+  {
+    title: 'Operational Excellence',
+    icon: '⚙️',
+    description:
+      'Led initiatives to improve school processes and community engagement including newsletters and resource management.',
   },
 ];
 
