@@ -11,18 +11,13 @@ export default function ContactSection() {
     },
     {
       title: 'Phone',
-      value: '+91 98765 43210',
+      value: '+91 95661 37548',
       icon: Phone,
     },
     {
       title: 'Location',
-      value: 'New Delhi, India',
+      value: 'Chennai, India',
       icon: MapPin,
-    },
-    {
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/soumya-mulubagula',
-      icon: Linkedin,
     },
   ];
 
