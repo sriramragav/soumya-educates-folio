@@ -21,18 +21,17 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <div className="space-y-4">
-            <h1 className="hero-text text-3xl font-bold leading-snug max-w-3xl mx-auto text-center">
-              Educator (B.Ed.) by Choice. <br />
-              <span className="text-xl font-medium text-gray-700">
-              Engineer (B.E.) and Administrator (M.B.A.) by Qualification.
-              </span> <br />
-              <span className="text-base text-gray-500">
-                15+ years of teaching & leadership, enriched by global experience in the US.
-              </span>
+          <div className="space-y-4 max-w-3xl mx-auto text-center">
+            <h1 className="hero-text text-3xl font-bold leading-snug">
+              Educator (B.Ed.) by Choice.
             </h1>
+            <p className="text-xl font-medium text-gray-700">
+              Engineer (B.E.) and Administrator (M.B.A.) by Qualification.
+            </p>
+            <p className="text-base text-gray-500">
+              15+ years of teaching & leadership, enriched by global experience in the US.
+            </p>
           </div>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               variant="hero"
