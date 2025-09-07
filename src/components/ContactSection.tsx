@@ -67,64 +67,7 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
-
-          {/* Contact Form */}
-          <Card className="shadow-elegant">
-            <CardContent className="p-8">
-              <form className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">First Name</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Last Name</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors"
-                    placeholder="john.doe@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Subject</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors"
-                    placeholder="Collaboration Opportunity"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea 
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project or how we can collaborate..."
-                  ></textarea>
-                </div>
-                
-                <Button variant="hero" size="lg" className="w-full gap-2">
-                  <Send className="h-5 w-5" />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          
         </div>
       </div>
     </section>
