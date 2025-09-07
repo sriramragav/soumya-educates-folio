@@ -5,32 +5,47 @@ import { Globe } from 'lucide-react';
 import { MonitorCheck } from 'lucide-react';
 
 const subjects = [
-  {
-    title: 'Multilingual Communication',
+ {
+    title: 'Inquiry-Based & Learner-Centered Teaching',
+    icon: BookOpen,
     description:
-      'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
-    icon: Globe,
+      'Expertise in differentiated instruction nurturing critical thinking and learner autonomy, fully aligned with IB philosophy.',
     level: 'All Levels',
   },
   {
-    title: 'J Krishnamurti Educational Approach',
-    description:
-      'Experienced in applying J Krishnamurti’s philosophy, fostering inquiry, self-awareness, and holistic growth in learners through reflective teaching and open dialogue.',
+    title: 'J Krishnamurti Educational Philosophy',
     icon: Lightbulb,
+    description:
+      'Applied reflective, inquiry-driven pedagogy fostering self-awareness, open dialogue, and holistic learner development.',
     level: 'Holistic & Reflective Teaching',
   },
   {
-    title: 'Digital Platforms & LMS',
-    description:
-      'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
+    title: 'Digital Tools & Online Platforms',
     icon: MonitorCheck,
+    description:
+      'Proficient in MS Office, Google Meet, WebEx, Zoom, and multiple LMS platforms facilitating effective hybrid and online instruction.',
     level: 'All Levels',
   },
   {
-    title: 'Teacher Training',
-    description: 'Professional development programs for educational excellence.',
+    title: 'Educational Content Development',
+    icon: BookOpen,
+    description:
+      'Created standards-aligned math and physics materials supporting differentiated learning and formative assessments.',
+    level: 'All Levels',
+  },
+  {
+    title: 'Parent & Staff Engagement',
+    icon: Users,
+    description:
+      'Skilled at building relationships through inductions, parent-teacher meetings, and professional development workshops.',
+    level: 'All Levels',
+  },
+  {
+    title: 'Student Counseling & Behavioral Support',
     icon: Award,
-    level: 'Professional Development',
+    description:
+      'Experienced in guiding students and employing movement- and style-based interventions for inclusive and supportive learning environments.',
+    level: 'All Levels',
   },
 ];
 
