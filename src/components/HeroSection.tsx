@@ -16,9 +16,6 @@ export default function HeroSection() {
               alt="Soumya Mulubagula"
               className="w-48 h-48 mx-auto rounded-full object-cover shadow-elegant"
             />
-            <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium shadow-soft">
-              Educationist
-            </div>
           </div>
           
           <div className="space-y-4 max-w-3xl mx-auto text-center">
