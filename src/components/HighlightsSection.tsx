@@ -95,12 +95,10 @@ export default function ScrollableHighlightsAndSkills() {
       className="relative py-20 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50"
     >
       <div className="container mx-auto px-4 max-w-7xl">
-        <header className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-indigo-700 mb-2">
-            Career Highlights
-          </h2>
-          <div className="mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-indigo-400 to-purple-600 shadow-md" />
-        </header>
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Journey</h2>
+        </div>
+
 
         {/* Scroll buttons */}
         <button
