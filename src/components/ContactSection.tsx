@@ -26,9 +26,6 @@ export default function ContactSection() {
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Connect</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to collaborate on educational initiatives or discuss innovative learning solutions?
-          </p>
         </div>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6">
