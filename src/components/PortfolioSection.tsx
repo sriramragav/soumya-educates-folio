@@ -12,10 +12,10 @@ const subjects = [
   level: 'All Levels'
   },
   {
-    title: 'Curriculum Development',
-    description: 'Designing comprehensive educational programs aligned with learning outcomes',
-    icon: Lightbulb,
-    level: 'Institutional Level',
+  title: 'J Krishnamurti Educational Approach',
+  description: 'Applied Krishnamurti’s philosophy to foster inquiry, reflection, and holistic growth in learners. Implemented reflective dialogue and open-ended classroom explorations, encouraging students to question, observe, and relate learning to life experiences. Designed activities promoting independent thinking and self-awareness. Noticed improved student engagement, collaborative atmosphere, and increased curiosity in diverse classrooms.',
+  icon: Lightbulb,
+  level: 'Holistic & Reflective Teaching'
   },
   {
   title: 'Digital Platforms & LMS',
