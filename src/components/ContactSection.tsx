@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 export default function ContactSection() {
   const contacts = [
@@ -42,12 +42,13 @@ export default function ContactSection() {
                 key={title}
                 className="flex items-center space-x-4 shadow-lg rounded-lg p-6 min-w-[280px] max-w-[320px] flex-1 bg-white"
               >
-                <div className="bg-primary text-primary-foreground p-3 rounded-lg flex items-center justify-center">
+                <div className="bg-primary text-primary-foreground p-3 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Icon className="h-6 w-6" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h4 className="font-semibold">{title}</h4>
-                  <p className="text-muted-foreground truncate max-w-xs">{value}</p>
+                  {/* removed truncate and set break-words for wrapping long text */}
+                  <p className="text-muted-foreground break-words">{value}</p>
                 </div>
               </Card>
             ))}
