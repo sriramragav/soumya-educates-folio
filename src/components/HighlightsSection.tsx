@@ -1,57 +1,47 @@
 import { useRef, useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  BookOpen,
-  Award,
-  Users,
-  Lightbulb,
-  Globe,
-  MonitorCheck,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
 
 const highlightsAndSkills = [
   {
     title: 'Transformational Leadership',
-    icon: Users,
+    icon: '👩‍🏫',
     description:
       'Rapidly advanced to Vice Principal, leading and mentoring 30+ educators to foster a collaborative and innovative school culture.',
   },
   {
     title: 'Innovative Curriculum & Assessment',
-    icon: BookOpen,
+    icon: '🗂️',
     description:
       'Designed inquiry-based Math and Physics curricula aligned with international standards, supporting holistic student evaluation.',
   },
   {
     title: 'Holistic Student Mentorship',
-    icon: Award,
+    icon: '🎓',
     description:
       'Guided students across IB, IGCSE, and other curricula, promoting academic achievement and socio-emotional growth.',
   },
   {
     title: 'Multicultural Communication & Engagement',
-    icon: Globe,
+    icon: '🗣️🌐',
     description:
       'Fluent in five languages, enhancing inclusivity and building bridges with diverse learners and families.',
   },
   {
     title: 'Wellness & Mindfulness Leadership',
-    icon: Lightbulb,
+    icon: '🧘‍♀️',
     description:
       'Integrated pranayama and pranic healing practices promoting emotional resilience and balance consistent with IB values.',
   },
   {
     title: 'Admissions & Community Relations',
-    icon: ChevronRight, // You can swap this with a better icon if you want
+    icon: '🎯',
     description:
       'Achieved a 70% enquiry-to-admission conversion rate by building trustful relationships with families and reinforcing institutional reputation.',
   },
   {
     title: 'Operational Excellence',
-    icon: MonitorCheck,
+    icon: '⚙️',
     description:
       'Led initiatives to improve school processes and community engagement including newsletters and resource management.',
   },
