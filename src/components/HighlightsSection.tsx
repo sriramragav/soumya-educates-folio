@@ -96,7 +96,7 @@ export default function ScrollableHighlightsAndSkills() {
     >
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Journey</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Career Highlights</h2>
         </div>
 
 
