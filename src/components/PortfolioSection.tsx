@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { BookOpen, Award, Users, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
+import { MonitorCheck } from 'lucide-react';
 
 const subjects = [
   {
@@ -17,11 +18,11 @@ const subjects = [
     level: 'Institutional Level',
   },
   {
-    title: 'Educational Technology',
-    description: 'Integration of digital tools and platforms in modern learning environments',
-    icon: Users,
-    level: 'All Levels',
-  },
+  title: 'Digital Platforms & LMS',
+  description: 'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
+  icon: MonitorCheck,
+  level: 'All Levels'
+  }
   {
     title: 'Teacher Training',
     description: 'Professional development programs for educational excellence',
