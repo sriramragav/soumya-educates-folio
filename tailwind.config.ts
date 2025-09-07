@@ -71,11 +71,14 @@ export default {
 			},
 			backgroundImage: {
 				'hero-gradient': 'var(--hero-gradient)',
-				'soft-gradient': 'var(--soft-gradient)'
+				'soft-gradient': 'var(--soft-gradient)',
+				'accent-gradient': 'var(--accent-gradient)',
+				'glow-gradient': 'var(--glow-gradient)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
-				'elegant': 'var(--shadow-elegant)'
+				'elegant': 'var(--shadow-elegant)',
+				'glow': 'var(--shadow-glow)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)'

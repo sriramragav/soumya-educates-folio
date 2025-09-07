@@ -8,40 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 220 15% 20%;
+    --background: 240 100% 99%;
+    --foreground: 230 15% 15%;
 
-    --card: 40 20% 99%;
-    --card-foreground: 220 15% 20%;
+    --card: 240 100% 99%;
+    --card-foreground: 230 15% 15%;
 
-    --popover: 40 20% 99%;
-    --popover-foreground: 220 15% 20%;
+    --popover: 240 100% 99%;
+    --popover-foreground: 230 15% 15%;
 
-    --primary: 210 90% 45%;
-    --primary-foreground: 40 20% 97%;
-    --primary-glow: 210 90% 60%;
+    --primary: 270 95% 65%;
+    --primary-foreground: 240 100% 99%;
+    --primary-glow: 270 95% 75%;
 
-    --secondary: 40 30% 92%;
-    --secondary-foreground: 220 15% 25%;
+    --secondary: 320 85% 75%;
+    --secondary-foreground: 240 100% 99%;
 
-    --muted: 40 25% 94%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 240 20% 96%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 25 90% 55%;
-    --accent-foreground: 40 20% 97%;
+    --accent: 45 95% 65%;
+    --accent-foreground: 230 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 20% 97%;
+    --destructive-foreground: 240 100% 99%;
 
-    --border: 40 20% 88%;
-    --input: 40 20% 90%;
-    --ring: 210 90% 45%;
+    --border: 240 20% 90%;
+    --input: 240 20% 94%;
+    --ring: 270 95% 65%;
 
-    /* Portfolio specific tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(210 90% 45%), hsl(210 90% 60%));
-    --soft-gradient: linear-gradient(180deg, hsl(40 20% 99%), hsl(40 25% 94%));
-    --shadow-soft: 0 4px 20px hsl(220 15% 20% / 0.08);
-    --shadow-elegant: 0 8px 30px hsl(210 90% 45% / 0.15);
+    /* Vibrant portfolio tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(270 95% 65%), hsl(320 85% 75%), hsl(45 95% 65%));
+    --soft-gradient: linear-gradient(180deg, hsl(270 95% 98%), hsl(320 85% 97%));
+    --accent-gradient: linear-gradient(90deg, hsl(320 85% 75%), hsl(45 95% 65%));
+    --glow-gradient: linear-gradient(45deg, hsl(270 95% 80%), hsl(320 85% 80%));
+    --shadow-soft: 0 4px 20px hsl(270 95% 65% / 0.12);
+    --shadow-elegant: 0 8px 30px hsl(270 95% 65% / 0.25);
+    --shadow-glow: 0 0 40px hsl(270 95% 75% / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
@@ -123,5 +126,26 @@ All colors MUST be HSL.
   
   .hero-text {
     @apply text-5xl sm:text-6xl lg:text-7xl font-bold bg-hero-gradient bg-clip-text text-transparent;
+  }
+
+  /* Enhanced card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-glow;
+  }
+
+  /* Pulse animation for decorative elements */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0.8;  
+      transform: scale(1.05);
+    }
   }
 }
