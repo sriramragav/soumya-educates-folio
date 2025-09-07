@@ -6,26 +6,29 @@ import { MonitorCheck } from 'lucide-react';
 
 const subjects = [
   {
-  title: 'Multilingual Communication',
-  description: 'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
-  icon: Globe,
-  level: 'All Levels'
+    title: 'Multilingual Communication',
+    description:
+      'Proficient in reading, writing, and speaking five languages, enabling inclusive and effective communication with diverse learners and families.',
+    icon: Globe,
+    level: 'All Levels',
   },
   {
-  title: 'J Krishnamurti Educational Approach',
-  description: 'Experienced in applying J Krishnamurti’s philosophy, fostering inquiry, self-awareness, and holistic growth in learners through reflective teaching and open dialogue.',
-  icon: Lightbulb,
-  level: 'Holistic & Reflective Teaching'
+    title: 'J Krishnamurti Educational Approach',
+    description:
+      'Experienced in applying J Krishnamurti’s philosophy, fostering inquiry, self-awareness, and holistic growth in learners through reflective teaching and open dialogue.',
+    icon: Lightbulb,
+    level: 'Holistic & Reflective Teaching',
   },
   {
-  title: 'Digital Platforms & LMS',
-  description: 'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
-  icon: MonitorCheck,
-  level: 'All Levels'
+    title: 'Digital Platforms & LMS',
+    description:
+      'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
+    icon: MonitorCheck,
+    level: 'All Levels',
   },
   {
     title: 'Teacher Training',
-    description: 'Professional development programs for educational excellence',
+    description: 'Professional development programs for educational excellence.',
     icon: Award,
     level: 'Professional Development',
   },
