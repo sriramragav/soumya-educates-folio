@@ -73,7 +73,7 @@ export default {
 				'hero-gradient': 'var(--hero-gradient)',
 				'soft-gradient': 'var(--soft-gradient)',
 				'accent-gradient': 'var(--accent-gradient)',
-				'glow-gradient': 'var(--glow-gradient)'
+				'card-gradient': 'var(--card-gradient)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',

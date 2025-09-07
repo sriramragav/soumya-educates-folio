@@ -177,26 +177,20 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section id="experience" className="py-16 bg-gradient-to-br from-secondary/10 via-background to-primary/10 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl pulse-glow"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/20 rounded-full blur-xl pulse-glow"></div>
-      </div>
-      
-      <div className="section-container relative z-10">
+    <section id="experience" className="py-16 bg-card-gradient">
+      <div className="section-container">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-hero-gradient bg-clip-text text-transparent">Professional Journey</span>
           </h2>
-          <div className="w-20 h-2 bg-hero-gradient rounded-full mx-auto shadow-glow"></div>
+          <div className="w-20 h-1 bg-hero-gradient rounded-full mx-auto"></div>
         </div>
         <div className="relative max-w-6xl mx-auto overflow-x-hidden">
           <Button
             variant="outline"
             size="icon"
             onClick={scrollLeft}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-glow hover:scale-110 transition-all disabled:bg-muted disabled:opacity-60 disabled:cursor-not-allowed`}
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-soft hover:shadow-elegant transition-all disabled:bg-muted disabled:opacity-60 disabled:cursor-not-allowed`}
             aria-label="Scroll Left"
             disabled={!canScrollLeft}
           >
@@ -210,7 +204,7 @@ export default function ExperienceSection() {
             {experiences.map((exp, index) => (
               <Card 
                 key={index}
-                className="flex-shrink-0 snap-center bg-card shadow-glow hover:shadow-xl transition-all duration-300 hover:scale-105 border border-primary/20"
+                className="flex-shrink-0 snap-center bg-card shadow-elegant hover:shadow-glow transition-all duration-300 hover:scale-105"
                 style={{ width: '90vw', maxWidth: '400px', maxHeight: '440px', scrollSnapAlign: 'center' }}
               >
                 <CardContent className="flex flex-col h-full p-5">
@@ -247,7 +241,7 @@ export default function ExperienceSection() {
             variant="outline"
             size="icon"
             onClick={scrollRight}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-glow hover:scale-110 transition-all disabled:bg-muted disabled:opacity-60 disabled:cursor-not-allowed`}
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-soft hover:shadow-elegant transition-all disabled:bg-muted disabled:opacity-60 disabled:cursor-not-allowed`}
             aria-label="Scroll Right"
             disabled={!canScrollRight}
           >
@@ -264,7 +258,7 @@ export default function ExperienceSection() {
                 onClick={() => goToIndex(idx)}
                 aria-label={`Go to experience ${idx + 1}`}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'bg-primary scale-125 shadow-glow' : 'bg-muted hover:bg-primary/50'
+                  idx === currentIndex ? 'bg-primary' : 'bg-muted hover:bg-primary/50'
                 }`}
                 aria-current={idx === currentIndex ? 'true' : undefined}
               />

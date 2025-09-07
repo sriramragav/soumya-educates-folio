@@ -3,18 +3,12 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-2xl"></div>
-      </div>
-      
-      <div className="space-y-6 text-center relative z-10">
+    <section id="about" className="py-20 bg-card-gradient">
+      <div className="space-y-6 text-center">
          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-           <span className="bg-accent-gradient bg-clip-text text-transparent">About Soumya</span>
+           <span className="bg-hero-gradient bg-clip-text text-transparent">About Soumya</span>
          </h2>
-         <div className="w-20 h-2 bg-accent-gradient rounded-full mx-auto shadow-glow"></div>
+         <div className="w-20 h-1 bg-hero-gradient rounded-full mx-auto"></div>
       </div>
       <br />
       <div className="section-container max-w-4xl mx-auto">
