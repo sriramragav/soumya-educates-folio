@@ -22,7 +22,7 @@ const subjects = [
   description: 'Proficient in MS Office Suite, Google Meet, WebEx, Zoom, and adept at using school-based LMS systems to deliver engaging instruction and manage online learning.',
   icon: MonitorCheck,
   level: 'All Levels'
-  }
+  },
   {
     title: 'Teacher Training',
     description: 'Professional development programs for educational excellence',
