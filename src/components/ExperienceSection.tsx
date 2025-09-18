@@ -4,6 +4,29 @@ import { Button } from '@/components/ui/button';
 import { useRef, useState, useEffect } from 'react';
 
 const experiences = [
+    {
+    year: 'Nov 2024 - Present',
+    title: 'VIII Teacher',
+    organization: 'Narayana School',
+    bullets: [
+      'Achieved 60–80% centum scores in concept-based Physics (Grades 8–10 & JEE Physics for Grades 6–10), outperforming other subjects by 20%.',
+      'Improved Grade 8 class average by 10% by initiating coordinated subject planning, focused QpS practice, and targeted clarifying sessions.',
+      'Developed and led the “Super 20” program, mentoring top performers and driving excellence in JEE concept exams with parental and teacher collaboration.',
+      'Mentored students on National Space Society projects, elevating project quality in design, documentation, and evaluation for competitions.',
+      'Built leadership and teamwork skills by organizing elections, debates, and rotating class leadership opportunities.',
+      'Boosted student confidence and communication through daily open discussions and structured public speaking activities.',
+      'Strengthened parent–teacher partnerships through fortnightly adoption calls, proactively supporting both academic and administrative aspects.',
+    ],
+    highlights: [
+      'Physics Instruction',
+      'Performance Improvement',
+      'JEE Mentoring',
+      'Project Guidance',
+      'Class Leadership',
+      'Public Speaking',
+      'Parent Engagement',
+    ],
+  },
   {
     year: 'Nov 2023 - Present',
     title: 'Academic Content Creator',
